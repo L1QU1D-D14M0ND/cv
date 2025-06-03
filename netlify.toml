@@ -6,4 +6,4 @@
   directory = "netlify/functions"
 
 [[plugins]]
-  package = "@netlify/remix-runtime"
+  package = "netlify/remix-runtime"
