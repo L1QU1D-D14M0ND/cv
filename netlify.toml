@@ -3,4 +3,4 @@
   publish = "build/client"
 
 [[plugins]]
-  package = "netlify/remix-runtime"
+  package = "@netlify/remix-runtime"
