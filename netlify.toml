@@ -1,0 +1,9 @@
+@netlify/remix-runtime[build]
+  command = "npm run build"
+  publish = "public"
+
+[functions]
+  directory = "netlify/functions"
+
+[[plugins]]
+  package = "@netlify/remix-runtime"
