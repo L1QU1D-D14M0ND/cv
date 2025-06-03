@@ -1,4 +1,4 @@
-@netlify/remix-runtime[build]
+netlify/remix-runtime[build]
   command = "npm run build"
   publish = "public"
 
