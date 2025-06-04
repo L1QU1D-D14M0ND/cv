@@ -1,4 +1,4 @@
-import { Link, Accordion,Heading, Skeleton } from "@chakra-ui/react"
+import { Link, Accordion, Heading, Skeleton } from "@chakra-ui/react"
 import { useEffect, useState } from "react";
 
 function Header() {
@@ -25,26 +25,26 @@ function Header() {
     return (
         <div className="sectionA" >
             <Skeleton asChild loading={load} >
-            <Accordion.Root collapsible rounded="xl" className="color1" >
-                <Accordion.Item key={item.value} value={item.value} >
-                    <Accordion.ItemTrigger>
-                        <Accordion.ItemIndicator />
-                        <Heading > Navegación </Heading>
-                    </Accordion.ItemTrigger>
-                    <Accordion.ItemContent>
-                        <Accordion.ItemBody className="color2" >
-                            <nav>
-                                <ul className="sectionTinyRow" >
-                                    <li><Link variant="underline" href="/" >Home</Link></li>
-                                    <li><Link variant="underline" href="./experiencia" >Experiencia</Link></li>
-                                    <li><Link variant="underline" href="./formacion" >Formación</Link></li>
-                                    <li><Link variant="underline" href="./detalles" >detalles</Link></li>
-                                </ul>
-                            </nav>
-                        </Accordion.ItemBody>
-                    </Accordion.ItemContent>
-                </Accordion.Item>
-            </Accordion.Root>
+                <Accordion.Root collapsible rounded="xl" className="color1" >
+                    <Accordion.Item key={item.value} value={item.value} >
+                        <Accordion.ItemTrigger>
+                            <Accordion.ItemIndicator />
+                            <Heading > Navegación </Heading>
+                        </Accordion.ItemTrigger>
+                        <Accordion.ItemContent>
+                            <Accordion.ItemBody className="color2" >
+                                <nav>
+                                    <ul className="sectionTinyRow" >
+                                        <li><Link variant="underline" href="/" >Home</Link></li>
+                                        <li><Link variant="underline" href="/experiencia" >Experiencia</Link></li>
+                                        <li><Link variant="underline" href="/formacion" >Formación</Link></li>
+                                        <li><Link variant="underline" href="/detalles" >detalles</Link></li>
+                                    </ul>
+                                </nav>
+                            </Accordion.ItemBody>
+                        </Accordion.ItemContent>
+                    </Accordion.Item>
+                </Accordion.Root>
             </Skeleton>
         </div>
     )
