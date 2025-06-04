@@ -1,5 +1,5 @@
 import { Link, Accordion, Heading, Skeleton } from "@chakra-ui/react"
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 function Header() {
     const [load, setLoad] = useState(true);
@@ -22,6 +22,11 @@ function Header() {
         }
     }, []);
 
+    const home = useRef("/");
+    const experiencia = useRef("/experiencia");
+    const formacion = useRef("/formacion");
+    const detalles = useRef("/detalles");
+
     return (
         <div className="sectionA" >
             <Skeleton asChild loading={load} >
@@ -35,10 +40,10 @@ function Header() {
                             <Accordion.ItemBody className="color2" >
                                 <nav>
                                     <ul className="sectionTinyRow" >
-                                        <li><Link variant="underline" href="/" >Home</Link></li>
-                                        <li><Link variant="underline" href="/experiencia" >Experiencia</Link></li>
-                                        <li><Link variant="underline" href="/formacion" >Formación</Link></li>
-                                        <li><Link variant="underline" href="/detalles" >detalles</Link></li>
+                                        <li><Link variant="underline" href={home.current} >Home</Link></li>
+                                        <li><Link variant="underline" href={formacion.current} >Experiencia</Link></li>
+                                        <li><Link variant="underline" href={experiencia.current} >Formación</Link></li>
+                                        <li><Link variant="underline" href={detalles.current} >detalles</Link></li>
                                     </ul>
                                 </nav>
                             </Accordion.ItemBody>
