@@ -4,7 +4,7 @@ function Perfil() {
 
     return (
         <div className="sectionTinyRow" >
-            <Text color="white" >Pagina hecha con: React, Chackra UI y Vercel</Text>
+            <Text color="white" >Pagina hecha con: React, Chackra UI y Netlify</Text>
         </div>
     )
 }

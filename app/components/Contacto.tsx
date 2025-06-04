@@ -27,13 +27,13 @@ function Contacto() {
     return (
         <div className="sectionTinyRow" >
             <Skeleton asChild loading={load} >
-                <Link variant="underline" href="/" >
+                <Link variant="underline" >
                     <BsFillTelephoneFill></BsFillTelephoneFill>
                     <Text>722 21 34 99</Text>
                 </Link>
             </Skeleton>
             <Skeleton asChild loading={load} >
-                <Link variant="underline" href="/" >
+                <Link variant="underline" >
                     <BsMailbox2 ></BsMailbox2>
                     <Text>tomrod04@gmail.com</Text>
                 </Link>
