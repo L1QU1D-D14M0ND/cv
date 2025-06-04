@@ -1,6 +1,5 @@
 import {
   Meta,
-  Link,
   Links,
   Outlet,
   Scripts,

@@ -1,4 +1,4 @@
-import { Heading, Progress } from "@chakra-ui/react";
+import { Heading } from "@chakra-ui/react";
 import Idioma from "./Idioma";
 
 function Idiomas() {

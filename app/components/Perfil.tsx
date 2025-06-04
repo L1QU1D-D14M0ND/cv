@@ -1,4 +1,4 @@
-import { Heading, Text, Image, Skeleton, ChakraProvider } from "@chakra-ui/react";
+import { Heading, Text, Image, Skeleton } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 
 function Perfil() {
