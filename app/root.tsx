@@ -12,9 +12,7 @@ import type { LinksFunction } from "@remix-run/node";
 
 import "./app.css";
 
-export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: "./app.css" },
-];
+import { Provider } from "./components/ui/provider";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -35,5 +33,5 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return <Provider ><Outlet /></Provider>;
 }
