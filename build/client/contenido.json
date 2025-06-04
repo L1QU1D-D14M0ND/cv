@@ -1,0 +1,18 @@
+[
+    {
+        "pagina": "Home",
+        "descripcion": "La pagina de inicio"
+    },
+    {
+        "pagina": "Experiencia",
+        "descripcion": "Muestra el historial laboral"
+    },
+    {
+        "pagina": "Formación",
+        "descripcion": "Muestra la formación realizada"
+    },
+    {
+        "pagina": "Detalles",
+        "descripcion": "Muestra idiomas y habilidades"
+    }
+]
