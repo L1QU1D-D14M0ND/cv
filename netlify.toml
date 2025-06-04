@@ -2,5 +2,3 @@
   command = "npm run build"
   publish = "build/client"
 
-[[plugins]]
-  package = "@netlify/remix-runtime"
