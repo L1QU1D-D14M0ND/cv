@@ -35,10 +35,10 @@ function Header() {
                         <Accordion.ItemBody className="color2" >
                             <nav>
                                 <ul className="sectionTinyRow" >
-                                    <li><Link variant="underline" href="#" >Home</Link></li>
-                                    <li><Link variant="underline" href="#/experiencia" >Experiencia</Link></li>
-                                    <li><Link variant="underline" href="#/formacion" >Formación</Link></li>
-                                    <li><Link variant="underline" href="#/detalles" >detalles</Link></li>
+                                    <li><Link variant="underline" href="/" >Home</Link></li>
+                                    <li><Link variant="underline" href="./experiencia" >Experiencia</Link></li>
+                                    <li><Link variant="underline" href="./formacion" >Formación</Link></li>
+                                    <li><Link variant="underline" href="./detalles" >detalles</Link></li>
                                 </ul>
                             </nav>
                         </Accordion.ItemBody>
