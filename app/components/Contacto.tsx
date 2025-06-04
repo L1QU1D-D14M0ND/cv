@@ -1,5 +1,5 @@
-import { Skeleton, Text, Link, Dialog, Button, CloseButton, Field, Fieldset, Stack, Input, Textarea } from "@chakra-ui/react";
-import { BsFillTelephoneFill, BsMailbox2, BsGlobe2 } from "react-icons/bs";
+import { Skeleton, Text, Link } from "@chakra-ui/react";
+import { BsFillTelephoneFill, BsMailbox2 } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import Formulario from "../components/Formulario";
 
