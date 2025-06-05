@@ -31,5 +31,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Provider ><Outlet /></Provider>;
+  return (
+    <Provider>
+      <Outlet />
+    </Provider>
+  );
 }
