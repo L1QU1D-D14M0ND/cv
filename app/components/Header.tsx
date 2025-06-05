@@ -25,6 +25,7 @@ function Header() {
     const home = useRef("/");
     const experiencia = useRef("/experiencia");
     const formacion = useRef("/formacion");
+    const proyectos = useRef("/proyectos");
     const detalles = useRef("/detalles");
 
     return (
@@ -43,7 +44,8 @@ function Header() {
                                         <li><Link variant="underline" href={home.current} >Home</Link></li>
                                         <li><Link variant="underline" href={formacion.current} >Experiencia</Link></li>
                                         <li><Link variant="underline" href={experiencia.current} >Formación</Link></li>
-                                        <li><Link variant="underline" href={detalles.current} >detalles</Link></li>
+                                        <li><Link variant="underline" href={proyectos.current} >Proyectos</Link></li>
+                                        <li><Link variant="underline" href={detalles.current} >Detalles</Link></li>
                                     </ul>
                                 </nav>
                             </Accordion.ItemBody>

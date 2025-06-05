@@ -83,5 +83,25 @@ form {
 }
 
 input {
-    border: solid, black;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+button {
+    background-color: inherit;
+    border-radius: 1rem;
+    color:black;
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, translate, transform;
+    transition-duration: 200ms;
+}
+
+button:hover {
+    border-radius: 1rem;
+    color: white;
+    background-color: black;
+}
+
+.css-125t34c {
+    color: black;
+    background-color: black;
+    border-color: black;
 }

@@ -25,14 +25,67 @@ function Contacto() {
     }
   }, []);
 
+  const [open, setOpen] = useState(false);
+
   function isEmailValid(email: string): boolean {
     const validEmailRegex =
       /^[-!#$%&'*+/0-9=?A-Z^_a-z`{|}~](.?[-!#$%&'*+/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*.?[a-zA-Z0-9])*.[a-zA-Z](-?[a-zA-Z0-9])+$/;
     if (!email) return false;
 
-    const validComs = [ "com","cat","org","net","es","jp","academy","college","education","edu","school","agency","business","management","marketing","partners","beauty","family",
-        "fashion","men","singles","vision","dental","doctor","health","hospital","support","surgery","cash","credit","finance","gold","investments","money","bike","fitness",
-        "football","hockey","soccer","yoga","amsterdam","barcelona","bayern","berlin","london","paris","app","computer","email","network","systems","technology" ]
+    const validComs = [
+      "com",
+      "cat",
+      "org",
+      "net",
+      "es",
+      "jp",
+      "academy",
+      "college",
+      "education",
+      "edu",
+      "school",
+      "agency",
+      "business",
+      "management",
+      "marketing",
+      "partners",
+      "beauty",
+      "family",
+      "fashion",
+      "men",
+      "singles",
+      "vision",
+      "dental",
+      "doctor",
+      "health",
+      "hospital",
+      "support",
+      "surgery",
+      "cash",
+      "credit",
+      "finance",
+      "gold",
+      "investments",
+      "money",
+      "bike",
+      "fitness",
+      "football",
+      "hockey",
+      "soccer",
+      "yoga",
+      "amsterdam",
+      "barcelona",
+      "bayern",
+      "berlin",
+      "london",
+      "paris",
+      "app",
+      "computer",
+      "email",
+      "network",
+      "systems",
+      "technology",
+    ];
 
     const emailParts = email.trim().split("@");
 
@@ -48,14 +101,19 @@ function Contacto() {
 
     if (domainParts.some((part) => part.length > 63)) return false;
 
-    if( !validComs.includes(domainParts[domainParts.length - 1]) ) return false;
+    if (!validComs.includes(domainParts[domainParts.length - 1])) return false;
 
     return validEmailRegex.test(email);
   }
 
   return (
     <Skeleton asChild loading={load}>
-      <Dialog.Root placement="center" motionPreset="slide-in-bottom">
+      <Dialog.Root
+        placement="center"
+        motionPreset="slide-in-bottom"
+        open={open}
+        onOpenChange={(e) => setOpen(e.open)}
+      >
         <Dialog.Trigger asChild>
           <Button>
             <BsGlobe2></BsGlobe2>
@@ -84,29 +142,27 @@ function Contacto() {
 
                   console.log(formData);
 
-                  const vMail = isEmailValid( event.currentTarget.e.value );
+                  const vMail = isEmailValid(event.currentTarget.e.value);
 
                   console.log(vMail);
 
                   /*emailjs
-                        .send(
-                        "service_stm52bn",
-                        "template_x77c60x",
-                        formData,
-                        "0MGgI_7dgt1-Mn5hx"
-                        )
-                        .then(
-                        function (response: EmailJSResponseStatus) {
-                            console.log(
-                            "SUCCESS!",
-                            response.status,
-                            response.text
-                            );
-                        },
-                        function (error: Error) {
-                            console.log("FAILED...", error);
-                        }
-                        );*/
+                    .send(
+                      "service_stm52bn",
+                      "template_x77c60x",
+                      formData,
+                      "0MGgI_7dgt1-Mn5hx"
+                    )
+                    .then(
+                      function (response: EmailJSResponseStatus) {
+                        console.log("SUCCESS!", response.status, response.text);
+                      },
+                      function (error: Error) {
+                        console.log("FAILED...", error);
+                      }
+                    );*/
+
+                  setOpen(false);
                 }}
               >
                 <label>Name</label>
@@ -122,11 +178,7 @@ function Contacto() {
               <Dialog.ActionTrigger asChild>
                 <Button variant="outline">Cancelar</Button>
               </Dialog.ActionTrigger>
-              <Dialog.ActionTrigger asChild>
-                <Button type="submit" size="sm">
-                  Enviar
-                </Button>
-              </Dialog.ActionTrigger>
+              <Dialog.ActionTrigger></Dialog.ActionTrigger>
             </Dialog.Footer>
             <Dialog.CloseTrigger asChild>
               <CloseButton size="sm" />
