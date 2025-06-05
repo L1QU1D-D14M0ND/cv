@@ -31,7 +31,7 @@ function Contacto() {
     }
   }, []);
 
-  const [mail, setMail] = useState({ name: "", email: "", message: "" });
+  const [mail, setMail] = useState({ "name": "", "email": "", "message": "" });
 
   return (
     <Skeleton asChild loading={load}>
@@ -54,9 +54,9 @@ function Contacto() {
                 <label>Name</label>
                 <input type="text" name="name" required></input>
                 <label>Email</label>
-                <input type="email" name="email" required></input>
+                <input type="text" name="email" required></input>
                 <label>Message</label>
-                <textarea name="message" required></textarea>
+                <input type="text" name="message" required></input>
               </form>
             </Dialog.Body>
             <Dialog.Footer>
@@ -68,11 +68,13 @@ function Contacto() {
                   type="submit"
                   size="sm"
                   onClick={function notify() {
+                    setMail( { "name": mail.name, "email": mail.email, "message": mail.message } );
                     emailjs
                       .send(
                         "service_stm52bn",
                         "template_x77c60x",
-                        mail
+                        mail,
+                        "lWHmGHHgBjdKm4QCbn2e0"
                       )
                       .then(
                         function (response: EmailJSResponseStatus) {
