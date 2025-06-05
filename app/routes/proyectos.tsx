@@ -4,6 +4,7 @@ import Perfil from "../components/Perfil";
 import Header from "../components/Header";
 import Contacto from "../components/Contacto";
 import Footer from "../components/Footer"
+import Carrousel from "../components/Carrousel";
 
 export const meta: MetaFunction = () => {
   return [
@@ -22,7 +23,7 @@ export default function Index() {
           <hr></hr>
         </Card.Header>
         <Card.Header className="padding" >
-          
+          <Carrousel ></Carrousel>
         </Card.Header>
         <Card.Body >
           <Contacto ></Contacto>
