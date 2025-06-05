@@ -74,7 +74,7 @@ function Contacto() {
                         "service_stm52bn",
                         "template_x77c60x",
                         mail,
-                        "lWHmGHHgBjdKm4QCbn2e0"
+                        "0MGgI_7dgt1-Mn5hx"
                       )
                       .then(
                         function (response: EmailJSResponseStatus) {
