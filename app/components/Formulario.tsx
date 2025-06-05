@@ -68,7 +68,7 @@ function Contacto() {
                   type="submit"
                   size="sm"
                   onClick={function notify() {
-                    setMail( { "name": mail.name, "email": mail.email, "message": mail.message } );
+                    setMail( { "name": mail.name, "email": mail.email.toLocaleLowerCase(), "message": mail.message } );
                     emailjs
                       .send(
                         "service_stm52bn",
