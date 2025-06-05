@@ -1,10 +1,4 @@
-import {
-  Skeleton,
-  Text,
-  Dialog,
-  Button,
-  CloseButton,
-} from "@chakra-ui/react";
+import { Skeleton, Text, Dialog, Button, CloseButton } from "@chakra-ui/react";
 import { BsGlobe2 } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import emailjs from "@emailjs/browser";
@@ -31,7 +25,33 @@ function Contacto() {
     }
   }, []);
 
-  const [mail, setMail] = useState({ "name": "", "email": "", "message": "" });
+  function isEmailValid(email: string): boolean {
+    const validEmailRegex =
+      /^[-!#$%&'*+/0-9=?A-Z^_a-z`{|}~](.?[-!#$%&'*+/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*.?[a-zA-Z0-9])*.[a-zA-Z](-?[a-zA-Z0-9])+$/;
+    if (!email) return false;
+
+    const validComs = [ "com","cat","org","net","es","jp","academy","college","education","edu","school","agency","business","management","marketing","partners","beauty","family",
+        "fashion","men","singles","vision","dental","doctor","health","hospital","support","surgery","cash","credit","finance","gold","investments","money","bike","fitness",
+        "football","hockey","soccer","yoga","amsterdam","barcelona","bayern","berlin","london","paris","app","computer","email","network","systems","technology" ]
+
+    const emailParts = email.trim().split("@");
+
+    if (emailParts.length !== 2) return false;
+
+    const account = emailParts[0];
+    const domain = emailParts[1];
+
+    if (account.length > 64) return false;
+    else if (domain.length > 255) return false;
+
+    const domainParts = domain.split(".");
+
+    if (domainParts.some((part) => part.length > 63)) return false;
+
+    if( !validComs.includes(domainParts[domainParts.length - 1]) ) return false;
+
+    return validEmailRegex.test(email);
+  }
 
   return (
     <Skeleton asChild loading={load}>
@@ -50,13 +70,52 @@ function Contacto() {
               <Dialog.Title>Contacto</Dialog.Title>
             </Dialog.Header>
             <Dialog.Body>
-              <form id="contact-form" name="mail">
+              <form
+                id="contact-form"
+                name="mail"
+                onSubmit={(event) => {
+                  event.preventDefault();
+
+                  const formData = {
+                    name: event.currentTarget.e.value,
+                    email: event.currentTarget.n.value,
+                    message: event.currentTarget.m.value,
+                  };
+
+                  console.log(formData);
+
+                  const vMail = isEmailValid( event.currentTarget.e.value );
+
+                  console.log(vMail);
+
+                  /*emailjs
+                        .send(
+                        "service_stm52bn",
+                        "template_x77c60x",
+                        formData,
+                        "0MGgI_7dgt1-Mn5hx"
+                        )
+                        .then(
+                        function (response: EmailJSResponseStatus) {
+                            console.log(
+                            "SUCCESS!",
+                            response.status,
+                            response.text
+                            );
+                        },
+                        function (error: Error) {
+                            console.log("FAILED...", error);
+                        }
+                        );*/
+                }}
+              >
                 <label>Name</label>
-                <input type="text" name="name" required></input>
+                <input type="text" name="n" required></input>
                 <label>Email</label>
-                <input type="text" name="email" required></input>
+                <input type="email" name="e" required></input>
                 <label>Message</label>
-                <input type="text" name="message" required></input>
+                <input type="text" name="m" required></input>
+                <button type="submit">Enviar</button>
               </form>
             </Dialog.Body>
             <Dialog.Footer>
@@ -64,32 +123,7 @@ function Contacto() {
                 <Button variant="outline">Cancelar</Button>
               </Dialog.ActionTrigger>
               <Dialog.ActionTrigger asChild>
-                <Button
-                  type="submit"
-                  size="sm"
-                  onClick={function notify() {
-                    setMail( { "name": mail.name, "email": mail.email.toLocaleLowerCase(), "message": mail.message } );
-                    emailjs
-                      .send(
-                        "service_stm52bn",
-                        "template_x77c60x",
-                        mail,
-                        "0MGgI_7dgt1-Mn5hx"
-                      )
-                      .then(
-                        function (response: EmailJSResponseStatus) {
-                          console.log(
-                            "SUCCESS!",
-                            response.status,
-                            response.text
-                          );
-                        },
-                        function (error: Error) {
-                          console.log("FAILED...", error);
-                        }
-                      );
-                  }}
-                >
+                <Button type="submit" size="sm">
                   Enviar
                 </Button>
               </Dialog.ActionTrigger>
