@@ -80,4 +80,9 @@ li {
 form {
     display: flex;
     flex-direction: column;
+    border: solid, black;
+}
+
+input {
+    border: solid, black;
 }
