@@ -1,4 +1,4 @@
-import { Table, Heading, Card, Skeleton } from "@chakra-ui/react";
+import { Table, Heading, Card, For } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
 function IndiceProyecto() {
@@ -22,13 +22,45 @@ function IndiceProyecto() {
     }
   }, []);
 
+  const [contenido, setContenido] = useState([
+    { id: -1, nombre: "", etiquetas: [""], descripcion: "Un juego de navegador de 3 en ralla" },
+  ]);
+
+  useEffect(() => {
+    fetch("/proyectos.json")
+      .then((response) => response.json())
+      .then((data) => {
+        setContenido(data);
+      })
+      .catch((err) => console.error("Error al cargar contenido:", err));
+  }, []);
+
   return (
     <Card.Root>
       <Card.Header>
         <Heading>Indice</Heading>
       </Card.Header>
-      <Card.Footer >
-
+      <Card.Footer>
+        <Table.Root>
+          <Table.Header>
+            <Table.ColumnHeader>Proyecto</Table.ColumnHeader>
+            <Table.ColumnHeader>Descripcion</Table.ColumnHeader>
+            <Table.ColumnHeader>Etiquetas</Table.ColumnHeader>
+          </Table.Header>
+          <Table.Body>
+            {contenido.map((p) => (
+              <Table.Row key={p.id}>
+                <Table.Cell>{p.nombre}</Table.Cell>
+                <Table.Cell>{p.descripcion}</Table.Cell>
+                <Table.Cell>
+                  <For each={p.etiquetas}>
+                    {(item, index) => <p key={index}>{item}</p>}
+                  </For>
+                </Table.Cell>
+              </Table.Row>
+            ))}
+          </Table.Body>
+        </Table.Root>
       </Card.Footer>
     </Card.Root>
   );
