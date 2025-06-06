@@ -12,11 +12,12 @@ import "swiper/css/autoplay";
 export default function Slides() {
   return (
     <div className="slides">
-      <Swiper
+      <Swiper className="center"
         // install Swiper modules
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={5}
         slidesPerView={1}
+        autoplay
         navigation
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
