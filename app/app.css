@@ -105,3 +105,14 @@ button:hover {
     background-color: black;
     border-color: black;
 }
+
+.slides {
+    justify-self: center;
+    max-width: 90vw;
+}
+
+.center {
+    justify-self: center;
+    justify-content: center;
+    justify-items: center;
+}
