@@ -1,5 +1,17 @@
-import { Table, Heading, Card, For } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import {
+  Heading,
+  Card,
+  Flex,
+  Combobox,
+  Portal,
+  Skeleton,
+  createListCollection,
+  Wrap,
+  Badge,
+} from "@chakra-ui/react";
+import { useEffect, useMemo, useState } from "react";
+import ItemProyecto from "./ItemProyecto";
+import { stringify } from "postcss";
 
 function IndiceProyecto() {
   const [load, setLoad] = useState(true);
@@ -23,8 +35,20 @@ function IndiceProyecto() {
   }, []);
 
   const [contenido, setContenido] = useState([
-    { id: -1, nombre: "", etiquetas: [""], descripcion: "Un juego de navegador de 3 en ralla" },
+    {
+      id: 0,
+      nombre: "",
+      descripcion: "",
+      imagen: "",
+      destacado: false,
+      dificultad: 0,
+      tecnologias: [""],
+      tiempo: "",
+      github: "",
+    },
   ]);
+
+  let tecnologias: string[] = [];
 
   useEffect(() => {
     fetch("/proyectos.json")
@@ -33,35 +57,93 @@ function IndiceProyecto() {
         setContenido(data);
       })
       .catch((err) => console.error("Error al cargar contenido:", err));
-  }, []);
+  });
+
+  contenido.forEach((p) => {
+    for (let a in p.tecnologias) {
+      if (!tecnologias.includes(a)) {
+        tecnologias.push(a);
+      }
+    }
+  });
+
+  const [searchValue, setSearchValue] = useState("");
+  const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
+
+  const filteredItems = useMemo(
+    () =>
+      tecnologias.filter((item) =>
+        item.toLowerCase().includes(searchValue.toLowerCase())
+      ),
+    [searchValue]
+  );
+
+  const collection = useMemo(
+    () => createListCollection({ items: filteredItems }),
+    [filteredItems]
+  );
+
+  const handleValueChange = (details: Combobox.ValueChangeDetails) => {
+    setSelectedSkills(details.value);
+  };
 
   return (
     <Card.Root>
       <Card.Header>
         <Heading>Indice</Heading>
+        <div>
+          <Combobox.Root
+            multiple
+            closeOnSelect
+            width="320px"
+            value={selectedSkills}
+            collection={collection}
+            onValueChange={handleValueChange}
+            onInputValueChange={(details) => setSearchValue(details.inputValue)}
+          >
+            <Wrap gap="2">
+              {selectedSkills.map((skill, index) => (
+                <Badge key={index}>{skill}</Badge>
+              ))}
+            </Wrap>
+
+            <Combobox.Label>Busca etiquetas</Combobox.Label>
+
+            <Combobox.Control>
+              <Combobox.Input />
+              <Combobox.IndicatorGroup>
+                <Combobox.Trigger />
+              </Combobox.IndicatorGroup>
+            </Combobox.Control>
+
+            <Portal>
+              <Combobox.Positioner>
+                <Combobox.Content>
+                  <Combobox.ItemGroup>
+                    <Combobox.ItemGroupLabel>Etiquetas</Combobox.ItemGroupLabel>
+                    {filteredItems.map((item, index) => (
+                      <Combobox.Item key={index} item={item}>
+                        {item}
+                        <Combobox.ItemIndicator />
+                      </Combobox.Item>
+                    ))}
+                    <Combobox.Empty>Ninguna etiqueta encontrada</Combobox.Empty>
+                  </Combobox.ItemGroup>
+                </Combobox.Content>
+              </Combobox.Positioner>
+            </Portal>
+          </Combobox.Root>
+        </div>
       </Card.Header>
-      <Card.Footer>
-        <Table.Root>
-          <Table.Header>
-            <Table.ColumnHeader>Proyecto</Table.ColumnHeader>
-            <Table.ColumnHeader>Descripcion</Table.ColumnHeader>
-            <Table.ColumnHeader>Etiquetas</Table.ColumnHeader>
-          </Table.Header>
-          <Table.Body>
-            {contenido.map((p) => (
-              <Table.Row key={p.id}>
-                <Table.Cell>{p.nombre}</Table.Cell>
-                <Table.Cell>{p.descripcion}</Table.Cell>
-                <Table.Cell>
-                  <For each={p.etiquetas}>
-                    {(item, index) => <p key={index}>{item}</p>}
-                  </For>
-                </Table.Cell>
-              </Table.Row>
+      <Skeleton loading={load}>
+        <Card.Body>
+          <Flex gap="4" wrap="wrap" justify="center">
+            {contenido.map((p, index) => (
+              <ItemProyecto item={p} key={index}></ItemProyecto>
             ))}
-          </Table.Body>
-        </Table.Root>
-      </Card.Footer>
+          </Flex>
+        </Card.Body>
+      </Skeleton>
     </Card.Root>
   );
 }

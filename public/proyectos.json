@@ -1,110 +1,79 @@
 [
-    {
-        "id": 1,
-        "nombre": "3 en raya",
-        "etiquetas": [
-            "html",
-            "JavaScript",
-            "tiempo corto",
-            "facil"
-        ],
-        "descripcion": "Un juego de navegador de 3 en ralla",
-        "dificultad": 50
-    },
-    {
-        "id": 2,
-        "nombre": "3 en raya",
-        "etiquetas": [
-            "html",
-            "JavaScript",
-            "tiempo corto",
-            "facil"
-        ],
-        "descripcion": "Un juego de navegador de 3 en ralla",
-        "dificultad": 50
-    },
-    {
-        "id": 3,
-        "nombre": "3 en raya",
-        "etiquetas": [
-            "html",
-            "JavaScript",
-            "tiempo corto",
-            "facil"
-        ],
-        "descripcion": "Un juego de navegador de 3 en ralla",
-        "dificultad": 50
-    },
-    {
-        "id": 4,
-        "nombre": "3 en raya",
-        "etiquetas": [
-            "html",
-            "JavaScript",
-            "tiempo corto",
-            "facil"
-        ],
-        "descripcion": "Un juego de navegador de 3 en ralla",
-        "dificultad": 50
-    },
-    {
-        "id": 5,
-        "nombre": "3 en raya",
-        "etiquetas": [
-            "html",
-            "JavaScript",
-            "tiempo corto",
-            "facil"
-        ],
-        "descripcion": "Un juego de navegador de 3 en ralla",
-        "dificultad": 50
-    },
-    {
-        "id": 6,
-        "nombre": "3 en raya",
-        "etiquetas": [
-            "html",
-            "JavaScript",
-            "tiempo corto",
-            "facil"
-        ],
-        "descripcion": "Un juego de navegador de 3 en ralla",
-        "dificultad": 50
-    },
-    {
-        "id": 7,
-        "nombre": "3 en raya",
-        "etiquetas": [
-            "html",
-            "JavaScript",
-            "tiempo corto",
-            "facil"
-        ],
-        "descripcion": "Un juego de navegador de 3 en ralla",
-        "dificultad": 50
-    },
-    {
-        "id": 8,
-        "nombre": "3 en raya",
-        "etiquetas": [
-            "html",
-            "JavaScript",
-            "tiempo corto",
-            "facil"
-        ],
-        "descripcion": "Un juego de navegador de 3 en ralla",
-        "dificultad": 50
-    },
-    {
-        "id": 9,
-        "nombre": "3 en raya",
-        "etiquetas": [
-            "html",
-            "JavaScript",
-            "tiempo corto",
-            "facil"
-        ],
-        "descripcion": "Un juego de navegador de 3 en ralla",
-        "dificultad": 50
-    }
+  {
+    "id": 1,
+    "nombre": "TaskBoard Pro",
+    "descripcion": "Aplicación de gestión de tareas con arrastrar y soltar.",
+    "imagen": "https://source.unsplash.com/400x300/?project,kanban",
+    "destacado": true,
+    "dificultad": 4,
+    "tecnologias": ["React", "Node.js", "MongoDB"],
+    "tiempo": "medio",
+    "github": "https://github.com/usuario/taskboard-pro"
+  },
+  {
+    "id": 2,
+    "nombre": "Laravel Commerce",
+    "descripcion": "Tienda online con panel de administración.",
+    "imagen": "https://source.unsplash.com/400x300/?project,ecommerce",
+    "destacado": true,
+    "dificultad": 5,
+    "tecnologias": ["Laravel", "MySQL", "Bootstrap"],
+    "tiempo": "largo",
+    "github": "https://github.com/usuario/laravel-commerce"
+  },
+  {
+    "id": 3,
+    "nombre": "WeatherApp JS",
+    "descripcion": "Consulta el clima con una API pública.",
+    "imagen": "https://source.unsplash.com/400x300/?project,weather",
+    "destacado": true,
+    "dificultad": 2,
+    "tecnologias": ["JavaScript", "HTML", "CSS"],
+    "tiempo": "corto",
+    "github": "https://github.com/usuario/weatherapp-js"
+  },
+  {
+    "id": 4,
+    "nombre": "Portafolio Personal",
+    "descripcion": "Web personal con proyectos y contacto.",
+    "imagen": "https://source.unsplash.com/400x300/?project,portfolio",
+    "destacado": false,
+    "dificultad": 3,
+    "tecnologias": ["HTML", "CSS", "JavaScript"],
+    "tiempo": "medio",
+    "github": "https://github.com/usuario/portafolio"
+  },
+  {
+    "id": 5,
+    "nombre": "Blog con Django",
+    "descripcion": "Blog con autenticación y panel de control.",
+    "imagen": "https://source.unsplash.com/400x300/?project,blog",
+    "destacado": false,
+    "dificultad": 4,
+    "tecnologias": ["Django", "SQLite", "Tailwind CSS"],
+    "tiempo": "medio",
+    "github": "https://github.com/usuario/django-blog"
+  },
+  {
+    "id": 6,
+    "nombre": "Notas Rápidas",
+    "descripcion": "App para tomar notas rápidas.",
+    "imagen": "https://source.unsplash.com/400x300/?project,notes",
+    "destacado": false,
+    "dificultad": 2,
+    "tecnologias": ["Vanilla JS", "HTML", "CSS"],
+    "tiempo": "corto",
+    "github": "https://github.com/usuario/quick-notes"
+  },
+  {
+    "id": 7,
+    "nombre": "API de Productos",
+    "descripcion": "API REST para gestión de productos.",
+    "imagen": "https://source.unsplash.com/400x300/?project,api",
+    "destacado": false,
+    "dificultad": 3,
+    "tecnologias": ["Express", "MongoDB", "Node.js"],
+    "tiempo": "medio",
+    "github": "https://github.com/usuario/product-api"
+  }
 ]

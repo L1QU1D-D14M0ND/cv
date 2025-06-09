@@ -1,4 +1,4 @@
-import { Card, Heading, Skeleton, Table } from "@chakra-ui/react";
+import { Card, Heading, Skeleton } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import Slides from "./Slides";
 
@@ -36,10 +36,12 @@ function Carrousel() {
   return (
     <Card.Root>
       <Card.Header>
-        <Heading>Carrousel</Heading>
+        <Heading>Destacado</Heading>
       </Card.Header>
       <Card.Footer >
-        <Slides ></Slides>
+        <Skeleton loading={load} >
+          <Slides ></Slides>
+        </Skeleton>
       </Card.Footer>
     </Card.Root>
   );

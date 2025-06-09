@@ -115,8 +115,17 @@ button:hover {
     justify-self: center;
     justify-content: center;
     justify-items: center;
-    background-color: rgba(0, 0, 255, 0.15);
     text-align: center;
-    height: 10rem;
+    height: auto;
     border-radius: 1rem;
+}
+
+.swiper-slide {
+    justify-self: center;
+    justify-content: center;
+    justify-items: center;
+}
+
+.card {
+    width: 30rem;
 }
