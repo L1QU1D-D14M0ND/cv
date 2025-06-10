@@ -8,13 +8,29 @@ import {
   createListCollection,
   Wrap,
   Badge,
+  RatingGroup,
 } from "@chakra-ui/react";
 import { useEffect, useMemo, useState } from "react";
-import ItemProyecto from "./ItemProyecto";
-import { stringify } from "postcss";
+import ProyectosFiltrados from "./ProyectosFiltrados";
 
 function IndiceProyecto() {
   const [load, setLoad] = useState(true);
+
+  const [items, setItems] = useState<any[]>([
+    {
+      id: 1,
+      nombre: "TaskBoard Pro",
+      descripcion: "Aplicación de gestión de tareas con arrastrar y soltar.",
+      imagen: "https://source.unsplash.com/400x300/?project,kanban",
+      destacado: true,
+      dificultad: 4,
+      tecnologias: ["React", "Node.js", "MongoDB"],
+      tiempo: "medio",
+      github: "https://github.com/usuario/taskboard-pro",
+    },
+  ]);
+
+  const [etiquetas, setEtiquetas] = useState<string[]>([]);
 
   // This will run one time after the component mounts
   useEffect(() => {
@@ -23,6 +39,22 @@ function IndiceProyecto() {
       // do something else
       setLoad(false);
     };
+
+    fetch("/proyectos.json")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setItems(data);
+        data.forEach((i: any) => {
+          for (let a of i.tecnologias) {
+            if (!etiquetas.includes(a)) {
+              setEtiquetas(etiquetas.concat([a]));
+              console.log(a);
+            }
+          }
+        });
+      })
+      .catch((err) => console.error("Error al cargar contenido:", err));
 
     // Check if the page has already loaded
     if (document.readyState === "complete") {
@@ -34,45 +66,12 @@ function IndiceProyecto() {
     }
   }, []);
 
-  const [contenido, setContenido] = useState([
-    {
-      id: 0,
-      nombre: "",
-      descripcion: "",
-      imagen: "",
-      destacado: false,
-      dificultad: 0,
-      tecnologias: [""],
-      tiempo: "",
-      github: "",
-    },
-  ]);
-
-  let tecnologias: string[] = [];
-
-  useEffect(() => {
-    fetch("/proyectos.json")
-      .then((response) => response.json())
-      .then((data) => {
-        setContenido(data);
-      })
-      .catch((err) => console.error("Error al cargar contenido:", err));
-  });
-
-  contenido.forEach((p) => {
-    for (let a in p.tecnologias) {
-      if (!tecnologias.includes(a)) {
-        tecnologias.push(a);
-      }
-    }
-  });
-
   const [searchValue, setSearchValue] = useState("");
   const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
 
   const filteredItems = useMemo(
     () =>
-      tecnologias.filter((item) =>
+      etiquetas.filter((item) =>
         item.toLowerCase().includes(searchValue.toLowerCase())
       ),
     [searchValue]
@@ -91,57 +90,50 @@ function IndiceProyecto() {
     <Card.Root>
       <Card.Header>
         <Heading>Indice</Heading>
-        <div>
-          <Combobox.Root
-            multiple
-            closeOnSelect
-            width="320px"
-            value={selectedSkills}
-            collection={collection}
-            onValueChange={handleValueChange}
-            onInputValueChange={(details) => setSearchValue(details.inputValue)}
-          >
-            <Wrap gap="2">
-              {selectedSkills.map((skill, index) => (
-                <Badge key={index}>{skill}</Badge>
-              ))}
-            </Wrap>
+        <Combobox.Root
+          multiple
+          closeOnSelect
+          width="320px"
+          value={selectedSkills}
+          collection={collection}
+          onValueChange={handleValueChange}
+          onInputValueChange={(details) => setSearchValue(details.inputValue)}
+        >
+          <Wrap gap="2">
+            {selectedSkills.map((skill) => (
+              <Badge key={skill}>{skill}</Badge>
+            ))}
+          </Wrap>
 
-            <Combobox.Label>Busca etiquetas</Combobox.Label>
+          <Combobox.Label>Etiquetas</Combobox.Label>
 
-            <Combobox.Control>
-              <Combobox.Input />
-              <Combobox.IndicatorGroup>
-                <Combobox.Trigger />
-              </Combobox.IndicatorGroup>
-            </Combobox.Control>
+          <Combobox.Control>
+            <Combobox.Input />
+            <Combobox.IndicatorGroup>
+              <Combobox.Trigger />
+            </Combobox.IndicatorGroup>
+          </Combobox.Control>
 
-            <Portal>
-              <Combobox.Positioner>
-                <Combobox.Content>
-                  <Combobox.ItemGroup>
-                    <Combobox.ItemGroupLabel>Etiquetas</Combobox.ItemGroupLabel>
-                    {filteredItems.map((item, index) => (
-                      <Combobox.Item key={index} item={item}>
-                        {item}
-                        <Combobox.ItemIndicator />
-                      </Combobox.Item>
-                    ))}
-                    <Combobox.Empty>Ninguna etiqueta encontrada</Combobox.Empty>
-                  </Combobox.ItemGroup>
-                </Combobox.Content>
-              </Combobox.Positioner>
-            </Portal>
-          </Combobox.Root>
-        </div>
+          <Portal>
+            <Combobox.Positioner>
+              <Combobox.Content>
+                <Combobox.ItemGroup>
+                  {filteredItems.map((item) => (
+                    <Combobox.Item key={item} item={item}>
+                      {item}
+                      <Combobox.ItemIndicator />
+                    </Combobox.Item>
+                  ))}
+                  <Combobox.Empty>Ninguna etiqueta encontrada</Combobox.Empty>
+                </Combobox.ItemGroup>
+              </Combobox.Content>
+            </Combobox.Positioner>
+          </Portal>
+        </Combobox.Root>
       </Card.Header>
       <Skeleton loading={load}>
         <Card.Body>
-          <Flex gap="4" wrap="wrap" justify="center">
-            {contenido.map((p, index) => (
-              <ItemProyecto item={p} key={index}></ItemProyecto>
-            ))}
-          </Flex>
+          <ProyectosFiltrados items={items}></ProyectosFiltrados>
         </Card.Body>
       </Skeleton>
     </Card.Root>

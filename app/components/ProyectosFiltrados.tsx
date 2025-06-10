@@ -1,9 +1,19 @@
-import { Text, Link } from "@chakra-ui/react";
-import { BsFillTelephoneFill, BsMailbox2 } from "react-icons/bs";
+import {
+  Heading,
+  Card,
+  Flex,
+  Combobox,
+  Portal,
+  Skeleton,
+  createListCollection,
+  Wrap,
+  Badge,
+  RatingGroup,
+} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import Formulario from "../components/Formulario";
+import ItemProyecto from "./ItemProyecto";
 
-function Contacto() {
+function ProyectosFiltrados(data: any) {
   const [load, setLoad] = useState(true);
 
   // This will run one time after the component mounts
@@ -24,19 +34,7 @@ function Contacto() {
     }
   }, []);
 
-  return (
-    <div className="sectionTinyRow">
-      <Link variant="underline">
-        <BsFillTelephoneFill></BsFillTelephoneFill>
-        <Text>722 21 34 99</Text>
-      </Link>
-      <Link variant="underline">
-        <BsMailbox2></BsMailbox2>
-        <Text>tomrod04@gmail.com</Text>
-      </Link>
-      <Formulario></Formulario>
-    </div>
-  );
+  return <Flex gap="4" wrap="wrap" justify="center"></Flex>;
 }
 
-export default Contacto;
+export default ProyectosFiltrados;

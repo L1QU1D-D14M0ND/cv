@@ -1,4 +1,4 @@
-import { Card, Image, RatingGroup } from "@chakra-ui/react";
+import { Card, Image, RatingGroup, Link, Text, Button } from "@chakra-ui/react";
 
 function ItemProyecto({
   item = {
@@ -22,11 +22,24 @@ function ItemProyecto({
         <p> {item.tecnologias.map((p) => p + " ")} </p>
       </Card.Body>
       <Card.Footer>
-        <RatingGroup.Root readOnly count={5} defaultValue={item.dificultad} size="sm">
+        <RatingGroup.Root
+          readOnly
+          count={5}
+          defaultValue={item.dificultad}
+          size="sm"
+        >
           <RatingGroup.HiddenInput />
           <RatingGroup.Label>Dificultad: </RatingGroup.Label>
           <RatingGroup.Control />
         </RatingGroup.Root>
+        <p>Tiempo: {item.tiempo}</p>
+      </Card.Footer>
+      <Card.Footer>
+        <Button asChild>
+          <Link variant="underline" href={item.github} >
+            <Text>Detalles</Text>
+          </Link>
+        </Button>
       </Card.Footer>
     </Card.Root>
   );
