@@ -1,19 +1,24 @@
-import {
-  Heading,
-  Card,
-  Flex,
-  Combobox,
-  Portal,
-  Skeleton,
-  createListCollection,
-  Wrap,
-  Badge,
-  RatingGroup,
-} from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import ItemProyecto from "./ItemProyecto";
 
-function ProyectosFiltrados(data: any) {
+function ProyectosFiltrados({
+  items = [
+    {
+      id: 1,
+      nombre: "TaskBoard Pro",
+      descripcion: "Aplicación de gestión de tareas con arrastrar y soltar.",
+      imagen: "https://source.unsplash.com/400x300/?project,kanban",
+      destacado: true,
+      dificultad: 4,
+      tecnologias: ["React", "Node.js", "MongoDB"],
+      tiempo: "medio",
+      github: "https://github.com/usuario/taskboard-pro",
+    },
+  ],
+  filtrar = false,
+  dif = 0,
+}) {
   const [load, setLoad] = useState(true);
 
   // This will run one time after the component mounts
@@ -34,7 +39,25 @@ function ProyectosFiltrados(data: any) {
     }
   }, []);
 
-  return <Flex gap="4" wrap="wrap" justify="center"></Flex>;
+  const [listaFiltrada, setListaFiltrada] = useState(items.filter((i) => i.dificultad == dif));
+
+  if (filtrar == false) {
+    return (
+      <Flex gap="4" wrap="wrap" justify="center">
+        {items.map((i) => (
+          <ItemProyecto key={i.id} item={i}></ItemProyecto>
+        ))}
+      </Flex>
+    );
+  }
+
+  return (
+    <Flex gap="4" wrap="wrap" justify="center">
+      {listaFiltrada.map((i) => (
+        <ItemProyecto key={i.id} item={i}></ItemProyecto>
+      ))}
+    </Flex>
+  );
 }
 
 export default ProyectosFiltrados;

@@ -13,15 +13,15 @@ import ItemProyecto from "./ItemProyecto";
 export default function Slides() {
   const [contenido, setContenido] = useState([
     {
-      id: 0,
-      nombre: "",
-      descripcion: "",
-      imagen: "",
-      destacado: false,
-      dificultad: 0,
-      tecnologias: [""],
-      tiempo: "",
-      github: "",
+      id: 1,
+      nombre: "TaskBoard Pro",
+      descripcion: "Aplicación de gestión de tareas con arrastrar y soltar.",
+      imagen: "https://source.unsplash.com/400x300/?project,kanban",
+      destacado: true,
+      dificultad: 4,
+      tecnologias: ["React", "Node.js", "MongoDB"],
+      tiempo: "medio",
+      github: "https://github.com/usuario/taskboard-pro",
     },
   ]);
 
@@ -46,7 +46,7 @@ export default function Slides() {
         navigation
         pagination={{ clickable: true }}
       >
-        {contenido.map((p,index) =>
+        {contenido.map((p, index) =>
           p.destacado === true ? (
             <SwiperSlide key={p.id}>
               <ItemProyecto item={p}></ItemProyecto>

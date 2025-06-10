@@ -1,7 +1,6 @@
 import {
   Heading,
   Card,
-  Flex,
   Combobox,
   Portal,
   Skeleton,
@@ -9,9 +8,11 @@ import {
   Wrap,
   Badge,
   RatingGroup,
+  Switch,
 } from "@chakra-ui/react";
 import { useEffect, useMemo, useState } from "react";
 import ProyectosFiltrados from "./ProyectosFiltrados";
+import { HiCheck, HiX } from "react-icons/hi";
 
 function IndiceProyecto() {
   const [load, setLoad] = useState(true);
@@ -43,13 +44,11 @@ function IndiceProyecto() {
     fetch("/proyectos.json")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setItems(data);
         data.forEach((i: any) => {
           for (let a of i.tecnologias) {
             if (!etiquetas.includes(a)) {
-              setEtiquetas(etiquetas.concat([a]));
-              console.log(a);
+              etiquetas.push(a);
             }
           }
         });
@@ -86,54 +85,80 @@ function IndiceProyecto() {
     setSelectedSkills(details.value);
   };
 
+  const [stars, setStars] = useState(3);
+
+  const [filtrar, setFiltrar] = useState(false);
+
   return (
     <Card.Root>
       <Card.Header>
         <Heading>Indice</Heading>
-        <Combobox.Root
-          multiple
-          closeOnSelect
-          width="320px"
-          value={selectedSkills}
-          collection={collection}
-          onValueChange={handleValueChange}
-          onInputValueChange={(details) => setSearchValue(details.inputValue)}
+        <Skeleton loading={load}>
+          <Combobox.Root
+            multiple
+            closeOnSelect
+            width="320px"
+            value={selectedSkills}
+            collection={collection}
+            onValueChange={handleValueChange}
+            onInputValueChange={(details) => setSearchValue(details.inputValue)}
+          >
+            <Wrap gap="2">
+              {selectedSkills.map((skill) => (
+                <Badge key={skill}>{skill}</Badge>
+              ))}
+            </Wrap>
+
+            <Combobox.Label>Etiquetas</Combobox.Label>
+
+            <Combobox.Control>
+              <Combobox.Input />
+              <Combobox.IndicatorGroup>
+                <Combobox.Trigger />
+              </Combobox.IndicatorGroup>
+            </Combobox.Control>
+
+            <Portal>
+              <Combobox.Positioner>
+                <Combobox.Content>
+                  <Combobox.ItemGroup>
+                    {filteredItems.map((item) => (
+                      <Combobox.Item key={item} item={item}>
+                        {item}
+                        <Combobox.ItemIndicator />
+                      </Combobox.Item>
+                    ))}
+                    <Combobox.Empty>Ninguna etiqueta encontrada</Combobox.Empty>
+                  </Combobox.ItemGroup>
+                </Combobox.Content>
+              </Combobox.Positioner>
+            </Portal>
+          </Combobox.Root>
+        </Skeleton>
+        <RatingGroup.Root
+          count={5}
+          value={stars}
+          onValueChange={(e) => setStars(e.value)}
         >
-          <Wrap gap="2">
-            {selectedSkills.map((skill) => (
-              <Badge key={skill}>{skill}</Badge>
-            ))}
-          </Wrap>
-
-          <Combobox.Label>Etiquetas</Combobox.Label>
-
-          <Combobox.Control>
-            <Combobox.Input />
-            <Combobox.IndicatorGroup>
-              <Combobox.Trigger />
-            </Combobox.IndicatorGroup>
-          </Combobox.Control>
-
-          <Portal>
-            <Combobox.Positioner>
-              <Combobox.Content>
-                <Combobox.ItemGroup>
-                  {filteredItems.map((item) => (
-                    <Combobox.Item key={item} item={item}>
-                      {item}
-                      <Combobox.ItemIndicator />
-                    </Combobox.Item>
-                  ))}
-                  <Combobox.Empty>Ninguna etiqueta encontrada</Combobox.Empty>
-                </Combobox.ItemGroup>
-              </Combobox.Content>
-            </Combobox.Positioner>
-          </Portal>
-        </Combobox.Root>
+          Dificultad:
+          <RatingGroup.HiddenInput />
+          <RatingGroup.Control />
+        </RatingGroup.Root>
+        <Switch.Root size="lg" onCheckedChange={(e) => {if (filtrar) {setFiltrar(false)} else {setFiltrar(true)}; console.log(filtrar)}} >
+          <Switch.HiddenInput />
+          <Switch.Control>
+            <Switch.Thumb>
+              <Switch.ThumbIndicator fallback={<HiX color="black" />}>
+                <HiCheck />
+              </Switch.ThumbIndicator>
+            </Switch.Thumb>
+          </Switch.Control>
+          <Switch.Label>Filtrar</Switch.Label>
+        </Switch.Root>
       </Card.Header>
       <Skeleton loading={load}>
         <Card.Body>
-          <ProyectosFiltrados items={items}></ProyectosFiltrados>
+          <ProyectosFiltrados items={items} filtrar={filtrar} dif={stars} ></ProyectosFiltrados>
         </Card.Body>
       </Skeleton>
     </Card.Root>

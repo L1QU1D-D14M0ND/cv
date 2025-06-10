@@ -2,15 +2,15 @@ import { Card, Image, RatingGroup, Link, Text, Button } from "@chakra-ui/react";
 
 function ItemProyecto({
   item = {
-    id: 0,
-    nombre: "",
-    descripcion: "",
-    imagen: "",
-    destacado: false,
-    dificultad: 0,
-    tecnologias: [""],
-    tiempo: "",
-    github: "",
+    id: 1,
+    nombre: "TaskBoard Pro",
+    descripcion: "Aplicación de gestión de tareas con arrastrar y soltar.",
+    imagen: "https://source.unsplash.com/400x300/?project,kanban",
+    destacado: true,
+    dificultad: 4,
+    tecnologias: ["React", "Node.js", "MongoDB"],
+    tiempo: "medio",
+    github: "https://github.com/usuario/taskboard-pro",
   },
 }) {
   return (
@@ -36,7 +36,7 @@ function ItemProyecto({
       </Card.Footer>
       <Card.Footer>
         <Button asChild>
-          <Link variant="underline" href={item.github} >
+          <Link variant="underline" href={item.github}>
             <Text>Detalles</Text>
           </Link>
         </Button>
