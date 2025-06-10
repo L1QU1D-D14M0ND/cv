@@ -39,7 +39,9 @@ function ProyectosFiltrados({
     }
   }, []);
 
-  const [listaFiltrada, setListaFiltrada] = useState(items.filter((i) => i.dificultad == dif));
+  const [listaFiltrada, setListaFiltrada] = useState(
+    items.filter((i) => i.dificultad == dif)
+  );
 
   if (filtrar == false) {
     return (

@@ -144,7 +144,16 @@ function IndiceProyecto() {
           <RatingGroup.HiddenInput />
           <RatingGroup.Control />
         </RatingGroup.Root>
-        <Switch.Root size="lg" onCheckedChange={(e) => {if (filtrar) {setFiltrar(false)} else {setFiltrar(true)}; console.log(filtrar)}} >
+        <Switch.Root
+          size="lg"
+          onCheckedChange={(e) => {
+            if (filtrar) {
+              setFiltrar(false);
+            } else {
+              setFiltrar(true);
+            }
+          }}
+        >
           <Switch.HiddenInput />
           <Switch.Control>
             <Switch.Thumb>
@@ -158,7 +167,11 @@ function IndiceProyecto() {
       </Card.Header>
       <Skeleton loading={load}>
         <Card.Body>
-          <ProyectosFiltrados items={items} filtrar={filtrar} dif={stars} ></ProyectosFiltrados>
+          <ProyectosFiltrados
+            items={items}
+            filtrar={filtrar}
+            dif={stars}
+          ></ProyectosFiltrados>
         </Card.Body>
       </Skeleton>
     </Card.Root>
