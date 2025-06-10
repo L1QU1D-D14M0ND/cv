@@ -18,6 +18,19 @@ function ProyectosFiltrados({
   ],
   filtrar = false,
   dif = 0,
+  filtrado = [
+    {
+      id: 1,
+      nombre: "TaskBoard Pro",
+      descripcion: "Aplicación de gestión de tareas con arrastrar y soltar.",
+      imagen: "https://source.unsplash.com/400x300/?project,kanban",
+      destacado: true,
+      dificultad: 4,
+      tecnologias: ["React", "Node.js", "MongoDB"],
+      tiempo: "medio",
+      github: "https://github.com/usuario/taskboard-pro",
+    },
+  ],
 }) {
   const [load, setLoad] = useState(true);
 
@@ -55,7 +68,7 @@ function ProyectosFiltrados({
 
   return (
     <Flex gap="4" wrap="wrap" justify="center">
-      {listaFiltrada.map((i) => (
+      {filtrado.map((i) => (
         <ItemProyecto key={i.id} item={i}></ItemProyecto>
       ))}
     </Flex>

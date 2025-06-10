@@ -89,6 +89,28 @@ function IndiceProyecto() {
 
   const [filtrar, setFiltrar] = useState(false);
 
+  const [listaFiltrada, setListaFiltrada] = useState(
+    items.filter((i) => i.dificultad == stars)
+  );
+
+  const handleFilter = (stars = 0) => {
+    if (selectedSkills.length < 1) {
+      setListaFiltrada(items.filter((i) => i.dificultad == stars));
+    } else {
+      setListaFiltrada(items.filter((i) => i.dificultad == stars));
+      setListaFiltrada(
+        listaFiltrada.filter((i) => {
+          for (let a of selectedSkills) {
+            if (i.includes(a)) {
+              return true;
+            }
+          }
+          return false;
+        })
+      );
+    }
+  };
+
   return (
     <Card.Root>
       <Card.Header>
@@ -100,7 +122,7 @@ function IndiceProyecto() {
             width="320px"
             value={selectedSkills}
             collection={collection}
-            onValueChange={handleValueChange}
+            onValueChange={ (details) => { handleValueChange(details);handleFilter(stars); }}
             onInputValueChange={(details) => setSearchValue(details.inputValue)}
           >
             <Wrap gap="2">
@@ -138,7 +160,10 @@ function IndiceProyecto() {
         <RatingGroup.Root
           count={5}
           value={stars}
-          onValueChange={(e) => setStars(e.value)}
+          onValueChange={(e) => {
+            setStars(e.value);
+            handleFilter(e.value);
+          }}
         >
           Dificultad:
           <RatingGroup.HiddenInput />
@@ -151,6 +176,7 @@ function IndiceProyecto() {
               setFiltrar(false);
             } else {
               setFiltrar(true);
+              handleFilter(stars);
             }
           }}
         >
@@ -171,6 +197,7 @@ function IndiceProyecto() {
             items={items}
             filtrar={filtrar}
             dif={stars}
+            filtrado={listaFiltrada}
           ></ProyectosFiltrados>
         </Card.Body>
       </Skeleton>
