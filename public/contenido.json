@@ -14,5 +14,9 @@
     {
         "pagina": "Detalles",
         "descripcion": "Muestra idiomas y habilidades"
+    },
+    {
+        "pagina": "Proyectos",
+        "descripcion": "Un carrusel con mis proyectos destacados y indice filtrable"
     }
 ]

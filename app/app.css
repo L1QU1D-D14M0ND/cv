@@ -91,7 +91,7 @@ button {
     border-radius: 1rem;
     color:black;
     transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, translate, transform;
-    transition-duration: 200ms;
+    transition-duration: 250ms;
 }
 
 button:hover {
@@ -108,7 +108,7 @@ button:hover {
 
 .slides {
     justify-self: center;
-    max-width: 90vw;
+    max-width: 70vw;
 }
 
 .center {

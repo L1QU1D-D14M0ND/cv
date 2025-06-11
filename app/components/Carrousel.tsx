@@ -26,19 +26,12 @@ function Carrousel() {
     }
   }, []);
 
-  const settings = {
-    dots: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-  };
-
   return (
     <Card.Root>
       <Card.Header>
         <Heading>Destacado</Heading>
       </Card.Header>
-      <Card.Footer >
+      <Card.Footer className="center" >
         <Skeleton loading={load} >
           <Slides ></Slides>
         </Skeleton>

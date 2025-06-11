@@ -101,7 +101,7 @@ function IndiceProyecto() {
       setListaFiltrada(
         listaFiltrada.filter((i) => {
           for (let a of selectedSkills) {
-            if (i.includes(a)) {
+            if (i.tecnologias.includes(a)) {
               return true;
             }
           }
@@ -117,13 +117,20 @@ function IndiceProyecto() {
         <Heading>Indice</Heading>
         <Skeleton loading={load}>
           <Combobox.Root
+            openOnClick
             multiple
             closeOnSelect
             width="320px"
             value={selectedSkills}
             collection={collection}
-            onValueChange={ (details) => { handleValueChange(details);handleFilter(stars); }}
-            onInputValueChange={(details) => setSearchValue(details.inputValue)}
+            onValueChange={(details) => {
+              handleValueChange(details);
+              handleFilter(stars);
+            }}
+            onInputValueChange={(details) => {
+              setSearchValue(details.inputValue);
+              handleFilter(stars);
+            }}
           >
             <Wrap gap="2">
               {selectedSkills.map((skill) => (

@@ -46,7 +46,7 @@ export default function Slides() {
         navigation
         pagination={{ clickable: true }}
       >
-        {contenido.map((p, index) =>
+        {contenido.map((p) =>
           p.destacado === true ? (
             <SwiperSlide key={p.id}>
               <ItemProyecto item={p}></ItemProyecto>
