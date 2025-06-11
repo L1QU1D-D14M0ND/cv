@@ -1,4 +1,13 @@
-import { Card, Image, RatingGroup, Link, Text, Button } from "@chakra-ui/react";
+import {
+  Card,
+  Image,
+  RatingGroup,
+  Button,
+  Badge,
+  Dialog,
+  Portal,
+  CloseButton,
+} from "@chakra-ui/react";
 
 function ItemProyecto({
   item = {
@@ -19,7 +28,12 @@ function ItemProyecto({
       <Card.Header> {item.nombre} </Card.Header>
       <Card.Body>
         {item.descripcion}
-        <p> {item.tecnologias.map((p) => p + " ")} </p>
+        <p>
+          {" "}
+          {item.tecnologias.map((p) => (
+            <Badge key={p} >{p}</Badge>
+          ))}{" "}
+        </p>
       </Card.Body>
       <Card.Footer>
         <RatingGroup.Root
@@ -35,11 +49,34 @@ function ItemProyecto({
         <p>Tiempo: {item.tiempo}</p>
       </Card.Footer>
       <Card.Footer>
-        <Button asChild>
-          <Link variant="underline" href={item.github}>
-            <Text>Detalles</Text>
-          </Link>
-        </Button>
+        <Dialog.Root size="cover">
+          <Dialog.Trigger asChild>
+            <Button variant="outline" size="sm">
+              Detalles
+            </Button>
+          </Dialog.Trigger>
+          <Portal>
+            <Dialog.Backdrop />
+            <Dialog.Positioner>
+              <Dialog.Content>
+                <Dialog.Header>
+                  <Dialog.Title>{item.nombre}</Dialog.Title>
+                </Dialog.Header>
+                <Dialog.Body>
+                  <Image src={item.imagen} alt={item.imagen} />
+                </Dialog.Body>
+                <Dialog.Footer>
+                  <Dialog.ActionTrigger asChild>
+                    <Button variant="outline">Cerrar</Button>
+                  </Dialog.ActionTrigger>
+                </Dialog.Footer>
+                <Dialog.CloseTrigger asChild>
+                  <CloseButton size="sm" />
+                </Dialog.CloseTrigger>
+              </Dialog.Content>
+            </Dialog.Positioner>
+          </Portal>
+        </Dialog.Root>
       </Card.Footer>
     </Card.Root>
   );

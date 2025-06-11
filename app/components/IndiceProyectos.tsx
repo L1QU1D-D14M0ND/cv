@@ -90,15 +90,32 @@ function IndiceProyecto() {
   const [filtrar, setFiltrar] = useState(false);
 
   const [listaFiltrada, setListaFiltrada] = useState(
-    items.filter((i) => i.dificultad == stars)
+    items.filter((i) => i.dificultad <= stars)
   );
 
   const handleFilter = (stars = 0) => {
     if (selectedSkills.length < 1) {
-      setListaFiltrada(items.filter((i) => i.dificultad == stars));
+      setListaFiltrada(items.filter((i) => i.dificultad <= stars));
+      console.log(listaFiltrada);
+      console.log(items.filter((i) => i.dificultad <= stars));
     } else {
-      setListaFiltrada(items.filter((i) => i.dificultad == stars));
+      //setListaFiltrada(items.filter((i) => i.dificultad == stars));
+      console.log(listaFiltrada);
+      console.log(items.filter((i) => i.dificultad <= stars));
       setListaFiltrada(
+        items
+          .filter((i) => i.dificultad <= stars)
+          .filter((i) => {
+            for (let a of selectedSkills) {
+              if (i.tecnologias.includes(a)) {
+                return true;
+              }
+            }
+            return false;
+          })
+      );
+      console.log(listaFiltrada);
+      console.log(
         listaFiltrada.filter((i) => {
           for (let a of selectedSkills) {
             if (i.tecnologias.includes(a)) {
@@ -151,9 +168,9 @@ function IndiceProyecto() {
               <Combobox.Positioner>
                 <Combobox.Content>
                   <Combobox.ItemGroup>
-                    {filteredItems.map((item) => (
-                      <Combobox.Item key={item} item={item}>
-                        {item}
+                    {filteredItems.map((i) => (
+                      <Combobox.Item key={i} item={i}>
+                        {i}
                         <Combobox.ItemIndicator />
                       </Combobox.Item>
                     ))}
@@ -181,6 +198,7 @@ function IndiceProyecto() {
           onCheckedChange={(e) => {
             if (filtrar) {
               setFiltrar(false);
+              handleFilter(stars);
             } else {
               setFiltrar(true);
               handleFilter(stars);

@@ -95,9 +95,7 @@ button {
 }
 
 button:hover {
-    border-radius: 1rem;
-    color: white;
-    background-color: black;
+    background-color: rgba(0, 0, 255, 0.15);
 }
 
 .css-125t34c {
