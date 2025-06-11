@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 body {
     margin: 0;
     min-width: 100vw;
@@ -15,115 +17,6 @@ body {
     flex-direction: column;
 }
 
-.sectionA {
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    display: flex;
-    flex-direction: row;
-}
-
-.column-section {
-    padding-top: 1%;
-    margin-top: 1%;
-    width: auto;
-    padding-bottom: 1%;
-}
-
-.sectionTiny {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.sectionTinyRow {
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
-.leftColumn {
-    padding-top: 1%;
-    background-color: rgba(0, 0, 255, 0.15);
-    min-width: 10rem;
-    min-height: 10rem;
-    height: auto;
-    padding-bottom: 1%;
-}
-
-.padding {
-    padding-top: 0.4rem;
-}
-
-hr {
-    border-top: 1px solid black;
-}
-
-ul {
-    width: auto;
-}
-
-li {
-    width: auto;
-}
-
-.color1 {
-    background-color: rgba(0, 0, 255, 0.15);
-}
-
-.color2 {
-    background-color: rgba(255, 255, 255, 0.5);
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-input {
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
-button {
-    background-color: inherit;
-    border-radius: 1rem;
-    color:black;
-    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, translate, transform;
-    transition-duration: 250ms;
-}
-
-button:hover {
-    background-color: rgba(0, 0, 255, 0.15);
-}
-
-.css-125t34c {
-    color: black;
-    background-color: black;
-    border-color: black;
-}
-
-.slides {
-    justify-self: center;
-    max-width: 70vw;
-}
-
-.center {
-    justify-self: center;
-    justify-content: center;
-    justify-items: center;
-    text-align: center;
-    height: auto;
-    border-radius: 1rem;
-}
-
-.swiper-slide {
-    justify-self: center;
-    justify-content: center;
-    justify-items: center;
-}
-
-.card {
-    width: 30rem;
+img {
+    width: 10rem;
 }

@@ -1,4 +1,4 @@
-import { Link, Accordion, Heading, Skeleton } from "@chakra-ui/react";
+import { Link, Accordion, Heading } from "@chakra-ui/react";
 import { useEffect, useState, useRef } from "react";
 
 function Header() {
@@ -29,17 +29,17 @@ function Header() {
   const detalles = useRef("/detalles");
 
   return (
-    <div className="sectionA">
-      <Accordion.Root collapsible rounded="xl" className="color1">
-        <Accordion.Item key={item.value} value={item.value}>
-          <Accordion.ItemTrigger>
+    <div className="rounded-xl">
+      <Accordion.Root collapsible rounded="xl" className="bg-sky-200">
+        <Accordion.Item value="" >
+          <Accordion.ItemTrigger className="bg-sky-200" >
             <Accordion.ItemIndicator />
             <Heading> Navegación </Heading>
           </Accordion.ItemTrigger>
           <Accordion.ItemContent>
-            <Accordion.ItemBody className="color2">
+            <Accordion.ItemBody className=" bg-sky-100 ">
               <nav>
-                <ul className="sectionTinyRow">
+                <ul className="flex flex-row justify-around">
                   <li>
                     <Link variant="underline" href={home.current}>
                       Home
@@ -74,12 +74,5 @@ function Header() {
     </div>
   );
 }
-
-const item = {
-  value: "info",
-  title: "Product Info",
-  content:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec odio vel dui euismod fermentum.",
-};
 
 export default Header;

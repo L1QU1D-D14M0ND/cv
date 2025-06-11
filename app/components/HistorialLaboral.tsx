@@ -3,7 +3,7 @@ import { Heading, Text, Timeline } from "@chakra-ui/react";
 function HistorialLaboral() {
     return (
         <div className="sectionA" >
-            <Heading rounded="xl" className="leftColumn" size="2xl" >Experiencia:</Heading>
+            <Heading rounded="xl" className="leftColumn bg-sky-200" size="2xl" >Experiencia:</Heading>
             <div className="column-section" >
                 <Timeline.Root>
                     <Timeline.Item>

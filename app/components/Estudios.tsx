@@ -3,7 +3,7 @@ import { Heading, Timeline, Text } from "@chakra-ui/react";
 function Estudios() {
   return (
     <div className="sectionA">
-      <Heading rounded="xl" className="leftColumn" size="2xl">
+      <Heading rounded="xl" className="leftColumn bg-sky-200" size="2xl">
         Formación:
       </Heading>
       <div className="column-section">

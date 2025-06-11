@@ -1,4 +1,4 @@
-import { Heading, Text, Image } from "@chakra-ui/react";
+import { Heading, Text } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 
 function Perfil() {
@@ -23,23 +23,26 @@ function Perfil() {
   }, []);
 
   return (
-    <div className="sectionA">
-      <Image rounded="xl" alt="Foto de perfil" className="leftColumn"></Image>
-      <div className="column-section">
-        <Heading size="5xl"> Gustavo Tomás Rodriguez Varela </Heading>
-        <Heading size="2xl"> Informatico </Heading>
-        <Text>
-          {" "}
+    <div className="flex flex-row">
+      <img
+        alt="Foto de perfil"
+        className="aspect-square rounded-full bg-sky-200 shrink-0"
+      ></img>
+      <div className="">
+        <h1 className="text-5xl font-bold subpixel-antialiased">
+          Gustavo Tomás Rodriguez Varela
+        </h1>
+        <h2> Informatico </h2>
+        <p>
           Bienvenido a mi curriculum web, aqui encontraras mis detalles
           laborales compactados en una aplicaión web que demeustra mis
-          habilidades.{" "}
-        </Text>
-        <Text>
-          {" "}
+          habilidades.
+        </p>
+        <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac leo
           vel velit pulvinar accumsan nec tincidunt leo. Lorem ipsum dolor sit
-          amet, consectetur adipiscing elit.{" "}
-        </Text>
+          amet, consectetur adipiscing elit.
+        </p>
       </div>
     </div>
   );

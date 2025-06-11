@@ -7,6 +7,9 @@ import {
   Dialog,
   Portal,
   CloseButton,
+  Heading,
+  Text,
+  Link,
 } from "@chakra-ui/react";
 
 function ItemProyecto({
@@ -31,7 +34,7 @@ function ItemProyecto({
         <p>
           {" "}
           {item.tecnologias.map((p) => (
-            <Badge key={p} >{p}</Badge>
+            <Badge key={p}>{p}</Badge>
           ))}{" "}
         </p>
       </Card.Body>
@@ -49,7 +52,7 @@ function ItemProyecto({
         <p>Tiempo: {item.tiempo}</p>
       </Card.Footer>
       <Card.Footer>
-        <Dialog.Root size="cover">
+        <Dialog.Root size="xl">
           <Dialog.Trigger asChild>
             <Button variant="outline" size="sm">
               Detalles
@@ -60,10 +63,44 @@ function ItemProyecto({
             <Dialog.Positioner>
               <Dialog.Content>
                 <Dialog.Header>
-                  <Dialog.Title>{item.nombre}</Dialog.Title>
+                  <Dialog.Title></Dialog.Title>
                 </Dialog.Header>
                 <Dialog.Body>
-                  <Image src={item.imagen} alt={item.imagen} />
+                  <div className="sectionA">
+                    <Image
+                      rounded="xl"
+                      src={item.imagen}
+                      alt={item.imagen}
+                      className="leftColumn"
+                    ></Image>
+                    <div className="column-section">
+                      <Heading size="5xl">{item.nombre}</Heading>
+                      <Heading size="2xl">
+                        {" "}
+                        {item.tecnologias.map((p) => (
+                          <Badge key={p}>{p}</Badge>
+                        ))}{" "}
+                      </Heading>
+                      <Text>{item.descripcion}</Text>
+                      <p>Tiempo: {item.tiempo}</p>
+                    </div>
+                  </div>
+
+                  <div className="sectionTinyRow" >
+                    <Link variant="underline" href={item.github} target="_blank" >
+                      <Text>Github</Text>
+                    </Link>
+                    <RatingGroup.Root
+                      readOnly
+                      count={5}
+                      defaultValue={item.dificultad}
+                      size="sm"
+                    >
+                      <RatingGroup.HiddenInput />
+                      <RatingGroup.Label>Dificultad: </RatingGroup.Label>
+                      <RatingGroup.Control />
+                    </RatingGroup.Root>
+                  </div>
                 </Dialog.Body>
                 <Dialog.Footer>
                   <Dialog.ActionTrigger asChild>
