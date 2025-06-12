@@ -25,7 +25,7 @@ function Contacto() {
   }, []);
 
   return (
-    <div className="sectionTinyRow">
+    <div className="sectionTinyRow flex flex-row justify-around opacityB rounded-xl w-full paddingAround">
       <Link variant="underline">
         <BsFillTelephoneFill></BsFillTelephoneFill>
         <Text>722 21 34 99</Text>

@@ -6,7 +6,7 @@ import { Card } from "@chakra-ui/react";
 
 function formacion() {
     return <div className="root" >
-        <Card.Root>
+        <Card.Root className="opacityA backdrop-invert backdrop-opacity-100" >
           <Card.Header >
             <Perfil ></Perfil>
             <hr></hr>

@@ -26,7 +26,7 @@ function ItemProyecto({
   },
 }) {
   return (
-    <Card.Root className="card">
+    <Card.Root className="w-3xs flex justify-center">
       <Image src={item.imagen} alt={item.imagen} />
       <Card.Header> {item.nombre} </Card.Header>
       <Card.Body>

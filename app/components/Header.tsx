@@ -29,16 +29,16 @@ function Header() {
   const detalles = useRef("/detalles");
 
   return (
-    <div className="rounded-xl">
-      <Accordion.Root collapsible rounded="xl" className="bg-sky-200">
-        <Accordion.Item value="" >
-          <Accordion.ItemTrigger className="bg-sky-200" >
+    <div className="rounded-xl border-hidden">
+      <Accordion.Root collapsible rounded="xl" className="bg-sky-200 border-hidden">
+        <Accordion.Item value="" className="border-hidden">
+          <Accordion.ItemTrigger className="bg-sky-200 border-hidden" >
             <Accordion.ItemIndicator />
             <Heading> Navegación </Heading>
           </Accordion.ItemTrigger>
-          <Accordion.ItemContent>
-            <Accordion.ItemBody className=" bg-sky-100 ">
-              <nav>
+          <Accordion.ItemContent className="border-hidden" >
+            <Accordion.ItemBody className="bg-sky-100 border-hidden">
+              <nav className="border-hidden" >
                 <ul className="flex flex-row justify-around">
                   <li>
                     <Link variant="underline" href={home.current}>

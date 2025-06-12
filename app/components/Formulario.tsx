@@ -164,19 +164,24 @@ function Contacto() {
 
                   setOpen(false);
                 }}
+                className="flex flex-col marginAround"
               >
-                <label>Name</label>
-                <input type="text" name="n" required></input>
-                <label>Email</label>
-                <input type="email" name="e" required></input>
-                <label>Message</label>
-                <input type="text" name="m" required></input>
-                <button type="submit">Enviar</button>
+                <label className="marginAround" >Name: </label>
+                <input className="marginAround bg-sky-100" type="text" name="n" required></input>
+                <label className="marginAround" >Email: </label>
+                <input className="marginAround bg-sky-100" type="email" name="e" required></input>
+                <label className="marginAround" >Message: </label>
+                <input className="marginAround bg-sky-100" type="text" name="m" required></input>
+                <button type="submit" className="marginAround">
+                  Enviar
+                </button>
               </form>
             </Dialog.Body>
             <Dialog.Footer>
               <Dialog.ActionTrigger asChild>
-                <Button variant="outline">Cancelar</Button>
+                <Button variant="outline" className="marginAround">
+                  Cancelar
+                </Button>
               </Dialog.ActionTrigger>
               <Dialog.ActionTrigger></Dialog.ActionTrigger>
             </Dialog.Footer>

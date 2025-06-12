@@ -31,7 +31,7 @@ function Carrousel() {
       <Card.Header>
         <Heading>Destacado</Heading>
       </Card.Header>
-      <Card.Footer className="center" >
+      <Card.Footer className="justify-center" >
         <Skeleton loading={load} >
           <Slides ></Slides>
         </Skeleton>

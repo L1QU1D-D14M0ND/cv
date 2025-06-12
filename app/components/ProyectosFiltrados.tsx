@@ -58,20 +58,20 @@ function ProyectosFiltrados({
 
   if (filtrar == false) {
     return (
-      <Flex gap="4" wrap="wrap" justify="center">
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 items-center">
         {items.map((i) => (
           <ItemProyecto key={i.id} item={i}></ItemProyecto>
         ))}
-      </Flex>
+      </div>
     );
   }
 
   return (
-    <Flex gap="4" wrap="wrap" justify="center">
+    <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 items-center">
       {filtrado.map((i) => (
         <ItemProyecto key={i.id} item={i}></ItemProyecto>
       ))}
-    </Flex>
+    </div>
   );
 }
 

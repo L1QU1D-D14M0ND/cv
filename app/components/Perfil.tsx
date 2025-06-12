@@ -23,16 +23,14 @@ function Perfil() {
   }, []);
 
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row opacityB rounded-lg paddingAround">
       <img
         alt="Foto de perfil"
         className="aspect-square rounded-full bg-sky-200 shrink-0"
       ></img>
-      <div className="">
-        <h1 className="text-5xl font-bold subpixel-antialiased">
-          Gustavo Tomás Rodriguez Varela
-        </h1>
-        <h2> Informatico </h2>
+      <div>
+        <p className="headingA">Gustavo Tomás Rodriguez Varela</p>
+        <p className="headingB" > Informatico </p>
         <p>
           Bienvenido a mi curriculum web, aqui encontraras mis detalles
           laborales compactados en una aplicaión web que demeustra mis
