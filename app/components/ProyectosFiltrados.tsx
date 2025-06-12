@@ -1,4 +1,3 @@
-import { Flex } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import ItemProyecto from "./ItemProyecto";
 
@@ -52,22 +51,18 @@ function ProyectosFiltrados({
     }
   }, []);
 
-  const [listaFiltrada, setListaFiltrada] = useState(
-    items.filter((i) => i.dificultad == dif)
-  );
-
   if (filtrar == false) {
     return (
-      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-y-1 justify-items-center">
         {items.map((i) => (
           <ItemProyecto key={i.id} item={i}></ItemProyecto>
         ))}
       </div>
     );
-  }
+  };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 items-center">
+    <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-x-1 gap-y-1 justify-items-center">
       {filtrado.map((i) => (
         <ItemProyecto key={i.id} item={i}></ItemProyecto>
       ))}

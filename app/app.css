@@ -33,6 +33,11 @@ img {
     margin: 0.4rem;
 }
 
+.noPaddingMargin {
+    margin: 0;
+    padding: 0;
+}
+
 .headingA {
   font-size: 2.25rem;
 }
@@ -42,7 +47,7 @@ img {
 }
 
 .opacityA {
-  background-color: rgba(0, 175, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .opacityB {
@@ -63,6 +68,6 @@ button:hover {
   color: white;
 }
 
-.swiper {
-    width: 80vw;
+.proyectos {
+    width: auto;
 }

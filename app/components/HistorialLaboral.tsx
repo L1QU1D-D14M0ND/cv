@@ -2,10 +2,10 @@ import { Heading, Text, Timeline } from "@chakra-ui/react";
 
 function HistorialLaboral() {
     return (
-        <div className="sectionA" >
-            <Heading rounded="xl" className="leftColumn bg-sky-200" size="2xl" >Experiencia:</Heading>
-            <div className="column-section" >
-                <Timeline.Root>
+        <div className="opacityB rounded-xl" >
+            <Heading rounded="xl" className="bg-sky-200 paddingAround" size="2xl" >Experiencia:</Heading>
+            <div className="paddingAround" >
+                <Timeline.Root> 
                     <Timeline.Item>
                         <Timeline.Connector>
                             <Timeline.Separator />
@@ -26,7 +26,7 @@ function HistorialLaboral() {
                         <Timeline.Content>
                         <Timeline.Title >
                             <Heading >2024</Heading>
-                            <Text> Practicas en empresa de FP en PC Box. </Text>
+                            <p> Practicas en empresa de FP en PC Box. </p>
                         </Timeline.Title>
                         <Timeline.Description />
                         </Timeline.Content>
@@ -39,7 +39,7 @@ function HistorialLaboral() {
                         <Timeline.Content>
                         <Timeline.Title >
                             <Heading >2022 - 2024</Heading>
-                            <Text> Trabajo como auxiliar de servicio en Banca March. </Text>
+                            <p> Trabajo como auxiliar de servicio en Banca March. </p>
                         </Timeline.Title>
                         <Timeline.Description />
                         </Timeline.Content>

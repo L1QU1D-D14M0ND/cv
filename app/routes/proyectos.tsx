@@ -6,6 +6,7 @@ import Contacto from "../components/Contacto";
 import Footer from "../components/Footer";
 import Carrousel from "../components/Carrousel";
 import IndiceProyecto from "../components/IndiceProyectos";
+import TextSectionA from "../components/TextSectionA";
 
 export const meta: MetaFunction = () => {
   return [{ title: "CV" }, { name: "", content: "" }];
@@ -14,17 +15,19 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <div className="root">
-      <Card.Root className="opacityA backdrop-invert backdrop-opacity-100 border-hidden">
+      <Card.Root className="opacityA backdrop-invert backdrop-opacity-100 border-hidden flex justify-center">
         <Card.Header>
           <Perfil></Perfil>
           <hr></hr>
           <Header></Header>
           <hr></hr>
         </Card.Header>
-        <Card.Header className="paddingTop">
+        <Card.Header className="paddingTop proyectos flex justify-center">
+          {/*<TextSectionA></TextSectionA>*/}
+          <hr></hr>
           {/*<Carrousel></Carrousel>*/}
           <hr></hr>
-          {/*<IndiceProyecto></IndiceProyecto>*/}
+          <IndiceProyecto ></IndiceProyecto>
           <hr></hr>
         </Card.Header>
         <Card.Footer className="paddingTop">

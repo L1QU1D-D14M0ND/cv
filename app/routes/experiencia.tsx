@@ -8,20 +8,20 @@ import { Card } from "@chakra-ui/react";
 function Experiencia() {
   return (
     <div className="root">
-      <Card.Root className="opacityA backdrop-invert backdrop-opacity-100">
-        <Card.Header>
+      <Card.Root className="opacityA backdrop-invert backdrop-opacity-100 marginAround">
+        <Card.Header >
           <Perfil></Perfil>
           <hr></hr>
           <Header></Header>
           <hr></hr>
         </Card.Header>
-        <Card.Header className="padding">
+        <Card.Header className="paddingTop">
           <TextSectionA></TextSectionA>
           <hr></hr>
           <HistorialLaboral></HistorialLaboral>
           <hr></hr>
         </Card.Header>
-        <Card.Body>
+        <Card.Body className="paddingTop">
           <Contacto></Contacto>
         </Card.Body>
       </Card.Root>

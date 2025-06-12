@@ -3,7 +3,6 @@ import {
   Card,
   Combobox,
   Portal,
-  Skeleton,
   createListCollection,
   Wrap,
   Badge,
@@ -96,12 +95,7 @@ function IndiceProyecto() {
   const handleFilter = (stars = 0) => {
     if (selectedSkills.length < 1) {
       setListaFiltrada(items.filter((i) => i.dificultad <= stars));
-      console.log(listaFiltrada);
-      console.log(items.filter((i) => i.dificultad <= stars));
     } else {
-      //setListaFiltrada(items.filter((i) => i.dificultad == stars));
-      console.log(listaFiltrada);
-      console.log(items.filter((i) => i.dificultad <= stars));
       setListaFiltrada(
         items
           .filter((i) => i.dificultad <= stars)
@@ -132,55 +126,53 @@ function IndiceProyecto() {
     <Card.Root>
       <Card.Header>
         <Heading>Indice</Heading>
-        <Skeleton loading={load}>
-          <Combobox.Root
-            openOnClick
-            multiple
-            closeOnSelect
-            width="320px"
-            value={selectedSkills}
-            collection={collection}
-            onValueChange={(details) => {
-              handleValueChange(details);
-              handleFilter(stars);
-            }}
-            onInputValueChange={(details) => {
-              setSearchValue(details.inputValue);
-              handleFilter(stars);
-            }}
-          >
-            <Wrap gap="2">
-              {selectedSkills.map((skill) => (
-                <Badge key={skill}>{skill}</Badge>
-              ))}
-            </Wrap>
+        <Combobox.Root
+          openOnClick
+          multiple
+          closeOnSelect
+          width="320px"
+          value={selectedSkills}
+          collection={collection}
+          onValueChange={(details) => {
+            handleValueChange(details);
+            handleFilter(stars);
+          }}
+          onInputValueChange={(details) => {
+            setSearchValue(details.inputValue);
+            handleFilter(stars);
+          }}
+        >
+          <Wrap gap="2">
+            {selectedSkills.map((skill) => (
+              <Badge key={skill}>{skill}</Badge>
+            ))}
+          </Wrap>
 
-            <Combobox.Label>Etiquetas</Combobox.Label>
+          <Combobox.Label>Etiquetas</Combobox.Label>
 
-            <Combobox.Control>
-              <Combobox.Input />
-              <Combobox.IndicatorGroup>
-                <Combobox.Trigger />
-              </Combobox.IndicatorGroup>
-            </Combobox.Control>
+          <Combobox.Control>
+            <Combobox.Input />
+            <Combobox.IndicatorGroup>
+              <Combobox.Trigger />
+            </Combobox.IndicatorGroup>
+          </Combobox.Control>
 
-            <Portal>
-              <Combobox.Positioner>
-                <Combobox.Content>
-                  <Combobox.ItemGroup>
-                    {filteredItems.map((i) => (
-                      <Combobox.Item key={i} item={i}>
-                        {i}
-                        <Combobox.ItemIndicator />
-                      </Combobox.Item>
-                    ))}
-                    <Combobox.Empty>Ninguna etiqueta encontrada</Combobox.Empty>
-                  </Combobox.ItemGroup>
-                </Combobox.Content>
-              </Combobox.Positioner>
-            </Portal>
-          </Combobox.Root>
-        </Skeleton>
+          <Portal>
+            <Combobox.Positioner>
+              <Combobox.Content>
+                <Combobox.ItemGroup>
+                  {filteredItems.map((i) => (
+                    <Combobox.Item key={i} item={i}>
+                      {i}
+                      <Combobox.ItemIndicator />
+                    </Combobox.Item>
+                  ))}
+                  <Combobox.Empty />
+                </Combobox.ItemGroup>
+              </Combobox.Content>
+            </Combobox.Positioner>
+          </Portal>
+        </Combobox.Root>
         <RatingGroup.Root
           count={5}
           value={stars}
@@ -216,16 +208,14 @@ function IndiceProyecto() {
           <Switch.Label>Filtrar</Switch.Label>
         </Switch.Root>
       </Card.Header>
-      <Skeleton loading={load}>
-        <Card.Body>
-          <ProyectosFiltrados
-            items={items}
-            filtrar={filtrar}
-            dif={stars}
-            filtrado={listaFiltrada}
-          ></ProyectosFiltrados>
-        </Card.Body>
-      </Skeleton>
+      <Card.Body>
+        <ProyectosFiltrados
+          items={items}
+          filtrar={filtrar}
+          dif={stars}
+          filtrado={listaFiltrada}
+        ></ProyectosFiltrados>
+      </Card.Body>
     </Card.Root>
   );
 }

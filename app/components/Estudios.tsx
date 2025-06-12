@@ -2,11 +2,11 @@ import { Heading, Timeline, Text } from "@chakra-ui/react";
 
 function Estudios() {
   return (
-    <div className="sectionA">
-      <Heading rounded="xl" className="leftColumn bg-sky-200" size="2xl">
+    <div className="opacityB rounded-xl">
+      <Heading rounded="xl" className="bg-sky-200 paddingAround" size="2xl">
         Formación:
       </Heading>
-      <div className="column-section">
+      <div className="column-section paddingAround">
         <Timeline.Root>
           <Timeline.Item>
             <Timeline.Connector>
@@ -15,9 +15,8 @@ function Estudios() {
             </Timeline.Connector>
             <Timeline.Content>
               <Timeline.Title>
-                <Heading>
-                  {" "}
-                  FP Grado Superior - Desarrollo de Aplicaciones Web - 1 Año{" "}
+                <Heading >
+                  FP Grado Superior - Desarrollo de Aplicaciones Web - 1 Año
                 </Heading>
                 <Text>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
@@ -35,8 +34,7 @@ function Estudios() {
             <Timeline.Content>
               <Timeline.Title>
                 <Heading>
-                  {" "}
-                  FP Grado Medio - Microsistemas Informaticos y Redes{" "}
+                  FP Grado Medio - Microsistemas Informaticos y Redes
                 </Heading>
                 <Text>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla

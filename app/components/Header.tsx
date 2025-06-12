@@ -46,12 +46,12 @@ function Header() {
                     </Link>
                   </li>
                   <li>
-                    <Link variant="underline" href={formacion.current}>
+                    <Link variant="underline" href={experiencia.current}>
                       Experiencia
                     </Link>
                   </li>
                   <li>
-                    <Link variant="underline" href={experiencia.current}>
+                    <Link variant="underline" href={formacion.current}>
                       Formación
                     </Link>
                   </li>

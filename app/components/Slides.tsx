@@ -35,7 +35,7 @@ export default function Slides() {
   }, []);
 
   return (
-    <div className="flex justify-center">
+    <div className="flex flex-row opacityB rounded-lg paddingAround w-3xs">
       <Swiper
         className="flex justify-center swiper"
         // install Swiper modules
@@ -49,7 +49,7 @@ export default function Slides() {
         {contenido.map((p) =>
           p.destacado === true ? (
             <SwiperSlide className="flex justify-center" key={p.id}>
-              <ItemProyecto item={p}></ItemProyecto>
+              <ItemProyecto  item={p}></ItemProyecto>
             </SwiperSlide>
           ) : null
         )}

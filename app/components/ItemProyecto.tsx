@@ -26,16 +26,15 @@ function ItemProyecto({
   },
 }) {
   return (
-    <Card.Root className="w-3xs flex justify-center">
+    <Card.Root className="w-3xs">
       <Image src={item.imagen} alt={item.imagen} />
       <Card.Header> {item.nombre} </Card.Header>
       <Card.Body>
         {item.descripcion}
         <p>
-          {" "}
           {item.tecnologias.map((p) => (
             <Badge key={p}>{p}</Badge>
-          ))}{" "}
+          ))}
         </p>
       </Card.Body>
       <Card.Footer>
@@ -66,14 +65,13 @@ function ItemProyecto({
                   <Dialog.Title></Dialog.Title>
                 </Dialog.Header>
                 <Dialog.Body>
-                  <div className="sectionA">
+                  <div>
                     <Image
                       rounded="xl"
                       src={item.imagen}
                       alt={item.imagen}
-                      className="leftColumn"
                     ></Image>
-                    <div className="column-section">
+                    <div>
                       <Heading size="5xl">{item.nombre}</Heading>
                       <Heading size="2xl">
                         {" "}
@@ -86,8 +84,12 @@ function ItemProyecto({
                     </div>
                   </div>
 
-                  <div className="sectionTinyRow" >
-                    <Link variant="underline" href={item.github} target="_blank" >
+                  <div className="sectionTinyRow">
+                    <Link
+                      variant="underline"
+                      href={item.github}
+                      target="_blank"
+                    >
                       <Text>Github</Text>
                     </Link>
                     <RatingGroup.Root
