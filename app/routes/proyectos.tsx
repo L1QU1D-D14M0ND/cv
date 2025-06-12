@@ -23,11 +23,11 @@ export default function Index() {
           <hr></hr>
         </Card.Header>
         <Card.Header className="paddingTop proyectos flex justify-center">
-          {/*<TextSectionA></TextSectionA>*/}
+          <TextSectionA></TextSectionA>
           <hr></hr>
-          {/*<Carrousel></Carrousel>*/}
+          <Carrousel></Carrousel>
           <hr></hr>
-          <IndiceProyecto ></IndiceProyecto>
+          <IndiceProyecto></IndiceProyecto>
           <hr></hr>
         </Card.Header>
         <Card.Footer className="paddingTop">

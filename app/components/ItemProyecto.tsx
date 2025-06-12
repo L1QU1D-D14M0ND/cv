@@ -26,7 +26,7 @@ function ItemProyecto({
   },
 }) {
   return (
-    <Card.Root className="w-3xs">
+    <Card.Root className="w-sm">
       <Image src={item.imagen} alt={item.imagen} />
       <Card.Header> {item.nombre} </Card.Header>
       <Card.Body>

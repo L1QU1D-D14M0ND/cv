@@ -35,9 +35,9 @@ export default function Slides() {
   }, []);
 
   return (
-    <div className="flex flex-row opacityB rounded-lg paddingAround w-3xs">
+    <div className="flex justify-center justify-items-center opacityB rounded-lg paddingAround slides">
       <Swiper
-        className="flex justify-center swiper"
+        className="flex justify-center justify-items-center swiper"
         // install Swiper modules
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={5}
@@ -48,8 +48,8 @@ export default function Slides() {
       >
         {contenido.map((p) =>
           p.destacado === true ? (
-            <SwiperSlide className="flex justify-center" key={p.id}>
-              <ItemProyecto  item={p}></ItemProyecto>
+            <SwiperSlide className="flex justify-center justify-items-center" key={p.id}>
+              <ItemProyecto item={p}></ItemProyecto>
             </SwiperSlide>
           ) : null
         )}
