@@ -64,7 +64,7 @@ function ItemProyecto({
                 <Dialog.Header>
                   <Dialog.Title></Dialog.Title>
                 </Dialog.Header>
-                <Dialog.Body className="flex justify-between flex-col" >
+                <Dialog.Body className="flex justify-between flex-col">
                   <div>
                     <Image
                       rounded="xl"
@@ -75,7 +75,7 @@ function ItemProyecto({
                       <Heading size="5xl">{item.nombre}</Heading>
                       <Heading size="2xl">
                         {" "}
-                        {item.tecnologias.map((p,index) => (
+                        {item.tecnologias.map((p, index) => (
                           <Badge key={index}>{p}</Badge>
                         ))}{" "}
                       </Heading>
@@ -83,7 +83,6 @@ function ItemProyecto({
                       <p>Tiempo: {item.tiempo}</p>
                     </div>
                   </div>
-
                   <div className="flex direction-col justify-start">
                     <RatingGroup.Root
                       readOnly

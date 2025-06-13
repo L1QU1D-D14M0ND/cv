@@ -1,0 +1,1 @@
+import{j as e}from"./index-_pjDEePQ.js";import{e as i}from"./TextSectionA-Ct-JgWEV.js";function t(){return e.jsx("div",{className:"sectionTinyRow",children:e.jsx(i,{color:"white",children:"Pagina hecha con: React, Chackra UI y Netlify"})})}export{t as P};
