@@ -54,8 +54,8 @@ function ProyectosFiltrados({
   if (filtrar == false) {
     return (
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-y-1 justify-items-center">
-        {items.map((i) => (
-          <ItemProyecto key={i.id} item={i}></ItemProyecto>
+        {items.map((i,index) => (
+          <ItemProyecto key={index} item={i}></ItemProyecto>
         ))}
       </div>
     );
@@ -63,8 +63,8 @@ function ProyectosFiltrados({
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-x-1 gap-y-1 justify-items-center">
-      {filtrado.map((i) => (
-        <ItemProyecto key={i.id} item={i}></ItemProyecto>
+      {filtrado.map((i,index) => (
+        <ItemProyecto key={index} item={i}></ItemProyecto>
       ))}
     </div>
   );

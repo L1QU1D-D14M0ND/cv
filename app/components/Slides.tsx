@@ -10,6 +10,8 @@ import "swiper/css/scrollbar";
 import "swiper/css/autoplay";
 import ItemProyecto from "./ItemProyecto";
 
+import useWindowDimensions from "./hooks/useWindowDimensions";
+
 export default function Slides() {
   const [contenido, setContenido] = useState([
     {
@@ -34,6 +36,18 @@ export default function Slides() {
       .catch((err) => console.error("Error al cargar contenido:", err));
   }, []);
 
+  const component = () => {
+    const { width } = useWindowDimensions();
+    /* you can also use default values or alias to use only one prop: */
+    // const { height: windowHeight = 480 } useWindowDimensions();
+
+    if (width === null) {
+      return 1280;
+    }
+
+    return width;
+  };
+
   return (
     <div className="flex justify-center justify-items-center opacityB rounded-lg paddingAround slides">
       <Swiper
@@ -41,15 +55,18 @@ export default function Slides() {
         // install Swiper modules
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={5}
-        slidesPerView={1}
+        slidesPerView={ component() > 1280 ? 3 : 1 }
         autoplay
         navigation
         pagination={{ clickable: true }}
       >
-        {contenido.map((p) =>
-          p.destacado === true ? (
-            <SwiperSlide className="flex justify-center justify-items-center" key={p.id}>
-              <ItemProyecto item={p}></ItemProyecto>
+        {contenido.map((i, index) =>
+          i.destacado === true ? (
+            <SwiperSlide
+              className="flex justify-center justify-items-center"
+              key={index}
+            >
+              <ItemProyecto item={i}></ItemProyecto>
             </SwiperSlide>
           ) : null
         )}

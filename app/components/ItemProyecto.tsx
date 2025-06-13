@@ -26,7 +26,7 @@ function ItemProyecto({
   },
 }) {
   return (
-    <Card.Root className="w-sm">
+    <Card.Root className="w-sm h-sm">
       <Image src={item.imagen} alt={item.imagen} />
       <Card.Header> {item.nombre} </Card.Header>
       <Card.Body>
@@ -64,7 +64,7 @@ function ItemProyecto({
                 <Dialog.Header>
                   <Dialog.Title></Dialog.Title>
                 </Dialog.Header>
-                <Dialog.Body>
+                <Dialog.Body className="flex justify-between flex-col" >
                   <div>
                     <Image
                       rounded="xl"
@@ -75,8 +75,8 @@ function ItemProyecto({
                       <Heading size="5xl">{item.nombre}</Heading>
                       <Heading size="2xl">
                         {" "}
-                        {item.tecnologias.map((p) => (
-                          <Badge key={p}>{p}</Badge>
+                        {item.tecnologias.map((p,index) => (
+                          <Badge key={index}>{p}</Badge>
                         ))}{" "}
                       </Heading>
                       <Text>{item.descripcion}</Text>
@@ -84,14 +84,7 @@ function ItemProyecto({
                     </div>
                   </div>
 
-                  <div className="sectionTinyRow">
-                    <Link
-                      variant="underline"
-                      href={item.github}
-                      target="_blank"
-                    >
-                      <Text>Github</Text>
-                    </Link>
+                  <div className="flex direction-col justify-start">
                     <RatingGroup.Root
                       readOnly
                       count={5}
@@ -106,7 +99,17 @@ function ItemProyecto({
                 </Dialog.Body>
                 <Dialog.Footer>
                   <Dialog.ActionTrigger asChild>
-                    <Button variant="outline">Cerrar</Button>
+                    <div>
+                      <Link
+                        className="marginAround"
+                        variant="underline"
+                        href={item.github}
+                        target="_blank"
+                      >
+                        <Text>Github</Text>
+                      </Link>
+                      <Button variant="outline">Cerrar</Button>
+                    </div>
                   </Dialog.ActionTrigger>
                 </Dialog.Footer>
                 <Dialog.CloseTrigger asChild>

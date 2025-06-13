@@ -27,7 +27,7 @@ function Carrousel() {
   }, []);
 
   return (
-    <Card.Root className="flex flex-row opacityB rounded-lg paddingAround" >
+    <Card.Root className="flex flex-row rounded-lg paddingAround" >
       <Card.Header>
         <Heading>Destacado</Heading>
       </Card.Header>
