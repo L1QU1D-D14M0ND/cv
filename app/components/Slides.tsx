@@ -11,8 +11,11 @@ import "swiper/css/autoplay";
 import ItemProyecto from "./ItemProyecto";
 
 import useWindowDimensions from "./hooks/useWindowDimensions";
+import { Skeleton } from "@chakra-ui/react";
 
 export default function Slides() {
+  const [load, setLoad] = useState(true);
+
   const [contenido, setContenido] = useState([
     {
       id: 1,
@@ -32,6 +35,7 @@ export default function Slides() {
       .then((response) => response.json())
       .then((data) => {
         setContenido(data);
+        setLoad(false);
       })
       .catch((err) => console.error("Error al cargar contenido:", err));
   }, []);
@@ -49,28 +53,28 @@ export default function Slides() {
   };
 
   return (
-    <div className="flex justify-center justify-items-center opacityB rounded-lg paddingAround slides">
-      <Swiper
-        className="flex justify-center justify-items-center swiper"
-        // install Swiper modules
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
-        spaceBetween={5}
-        slidesPerView={ component() > 1280 ? 3 : 1 }
-        autoplay
-        navigation
-        pagination={{ clickable: true }}
-      >
-        {contenido.map((i, index) =>
-          i.destacado === true ? (
-            <SwiperSlide
-              className="flex justify-center justify-items-center"
-              key={index}
-            >
-              <ItemProyecto item={i}></ItemProyecto>
-            </SwiperSlide>
-          ) : null
-        )}
-      </Swiper>
-    </div>
+    <Skeleton loading={load} className="flex justify-center justify-items-center rounded-lg slides">
+        <Swiper
+          className="flex justify-center justify-items-center swiper"
+          // install Swiper modules
+          modules={[Navigation, Pagination, Scrollbar, A11y]}
+          spaceBetween={5}
+          slidesPerView={component() > 1350 ? 3 : 1}
+          autoplay
+          navigation
+          pagination={{ clickable: true }}
+        >
+          {contenido.map((i, index) =>
+            i.destacado === true ? (
+              <SwiperSlide
+                className="flex justify-center justify-items-center"
+                key={index}
+              >
+                <ItemProyecto item={i}></ItemProyecto>
+              </SwiperSlide>
+            ) : null
+          )}
+        </Swiper>
+    </Skeleton>
   );
 }

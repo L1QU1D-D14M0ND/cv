@@ -8,6 +8,7 @@ import {
   Badge,
   RatingGroup,
   Switch,
+  Skeleton,
 } from "@chakra-ui/react";
 import { useEffect, useMemo, useState } from "react";
 import ProyectosFiltrados from "./ProyectosFiltrados";
@@ -20,14 +21,7 @@ function IndiceProyecto() {
 
   const [etiquetas, setEtiquetas] = useState<string[]>([]);
 
-  // This will run one time after the component mounts
   useEffect(() => {
-    // callback function to call when event triggers
-    const onPageLoad = () => {
-      // do something else
-      setLoad(false);
-    };
-
     fetch("/proyectos.json")
       .then((response) => response.json())
       .then((data) => {
@@ -39,17 +33,9 @@ function IndiceProyecto() {
             }
           }
         });
+        setLoad(false);
       })
       .catch((err) => console.error("Error al cargar contenido:", err));
-
-    // Check if the page has already loaded
-    if (document.readyState === "complete") {
-      onPageLoad();
-    } else {
-      window.addEventListener("load", onPageLoad, false);
-      // Remove the event listener when component unmounts
-      return () => window.removeEventListener("load", onPageLoad);
-    }
   }, []);
 
   const [searchValue, setSearchValue] = useState("");
@@ -70,6 +56,7 @@ function IndiceProyecto() {
 
   const handleValueChange = (details: Combobox.ValueChangeDetails) => {
     setSelectedSkills(details.value);
+    handleFilter(stars);
   };
 
   const [stars, setStars] = useState(3);
@@ -199,14 +186,15 @@ function IndiceProyecto() {
           <Switch.Label>Filtrar</Switch.Label>
         </Switch.Root>
       </Card.Header>
-      <Card.Body>
-        <ProyectosFiltrados
-          items={items}
-          filtrar={filtrar}
-          dif={stars}
-          filtrado={listaFiltrada}
-        ></ProyectosFiltrados>
-      </Card.Body>
+      <Skeleton loading={load}>
+        <Card.Body>
+          <ProyectosFiltrados
+            items={items}
+            filtrar={filtrar}
+            filtrado={listaFiltrada}
+          ></ProyectosFiltrados>
+        </Card.Body>
+      </Skeleton>
     </Card.Root>
   );
 }

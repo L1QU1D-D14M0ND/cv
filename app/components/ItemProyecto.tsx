@@ -14,26 +14,26 @@ import {
 
 function ItemProyecto({
   item = {
-    id: 1,
-    nombre: "TaskBoard Pro",
-    descripcion: "Aplicación de gestión de tareas con arrastrar y soltar.",
-    imagen: "https://source.unsplash.com/400x300/?project,kanban",
-    destacado: true,
-    dificultad: 4,
-    tecnologias: ["React", "Node.js", "MongoDB"],
-    tiempo: "medio",
-    github: "https://github.com/usuario/taskboard-pro",
-  },
+    id: 0,
+    nombre: "",
+    descripcion: "",
+    imagen: "",
+    destacado: false,
+    dificultad: 0,
+    tecnologias: [""],
+    tiempo: "",
+    github: "",
+  }
 }) {
   return (
-    <Card.Root className="w-sm h-sm">
+    <Card.Root className="w-79 h-90">
       <Image src={item.imagen} alt={item.imagen} />
       <Card.Header> {item.nombre} </Card.Header>
       <Card.Body>
         {item.descripcion}
         <p>
-          {item.tecnologias.map((p) => (
-            <Badge key={p}>{p}</Badge>
+          {item.tecnologias.map((p,index) => (
+            <Badge key={index}>{p}</Badge>
           ))}
         </p>
       </Card.Body>

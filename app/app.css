@@ -2,7 +2,7 @@
 
 body {
   margin: 0;
-  min-width: 100vw;
+  max-width: 100vw;
   min-height: 100vh;
   background-image: url("/rootBackground.jpg");
   background-size: cover;
@@ -47,7 +47,7 @@ img {
 }
 
 .opacityA {
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .opacityB {
@@ -73,5 +73,7 @@ button:hover {
 }
 
 .slides {
-    width: 90vw;
+    max-width: 70vw;
+    margin: 0;
+    padding: 0;
 }

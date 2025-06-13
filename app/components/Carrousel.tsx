@@ -27,16 +27,14 @@ function Carrousel() {
   }, []);
 
   return (
-    <Card.Root className="flex flex-row rounded-lg paddingAround" >
-      <Card.Header>
-        <Heading>Destacado</Heading>
-      </Card.Header>
-      <Card.Footer className="justify-center" >
-        <Skeleton loading={load} >
-          <Slides ></Slides>
-        </Skeleton>
-      </Card.Footer>
-    </Card.Root>
+      <Card.Root className="flex flex-row rounded-lg paddingAround">
+        <Card.Header>
+          <Heading>Destacado</Heading>
+        </Card.Header>
+        <Card.Footer className="justify-center">
+          <Slides></Slides>
+        </Card.Footer>
+      </Card.Root>
   );
 }
 
