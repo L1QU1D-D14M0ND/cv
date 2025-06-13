@@ -16,19 +16,7 @@ import { HiCheck, HiX } from "react-icons/hi";
 function IndiceProyecto() {
   const [load, setLoad] = useState(true);
 
-  const [items, setItems] = useState<any[]>([
-    {
-      id: 1,
-      nombre: "TaskBoard Pro",
-      descripcion: "Aplicación de gestión de tareas con arrastrar y soltar.",
-      imagen: "https://source.unsplash.com/400x300/?project,kanban",
-      destacado: true,
-      dificultad: 4,
-      tecnologias: ["React", "Node.js", "MongoDB"],
-      tiempo: "medio",
-      github: "https://github.com/usuario/taskboard-pro",
-    },
-  ]);
+  const [items, setItems] = useState<any[]>([]);
 
   const [etiquetas, setEtiquetas] = useState<string[]>([]);
 
@@ -92,13 +80,13 @@ function IndiceProyecto() {
     items.filter((i) => i.dificultad <= stars)
   );
 
-  const handleFilter = (stars = 0) => {
+  const handleFilter = (s: number) => {
     if (selectedSkills.length < 1) {
-      setListaFiltrada(items.filter((i) => i.dificultad <= stars));
+      setListaFiltrada(items.filter((i) => i.dificultad <= s));
     } else {
       setListaFiltrada(
         items
-          .filter((i) => i.dificultad <= stars)
+          .filter((i) => i.dificultad <= s)
           .filter((i) => {
             for (let a of selectedSkills) {
               if (i.tecnologias.includes(a)) {
@@ -161,8 +149,8 @@ function IndiceProyecto() {
             <Combobox.Positioner>
               <Combobox.Content>
                 <Combobox.ItemGroup>
-                  {filteredItems.map((i) => (
-                    <Combobox.Item key={i} item={i}>
+                  {filteredItems.map((i, index) => (
+                    <Combobox.Item key={index} item={i}>
                       {i}
                       <Combobox.ItemIndicator />
                     </Combobox.Item>
@@ -174,10 +162,12 @@ function IndiceProyecto() {
           </Portal>
         </Combobox.Root>
         <RatingGroup.Root
+          colorPalette="cyan"
           count={5}
           value={stars}
           onValueChange={(e) => {
             setStars(e.value);
+            console.log(e.value);
             handleFilter(e.value);
           }}
         >
@@ -186,6 +176,7 @@ function IndiceProyecto() {
           <RatingGroup.Control />
         </RatingGroup.Root>
         <Switch.Root
+          colorPalette="cyan"
           size="lg"
           onCheckedChange={(e) => {
             if (filtrar) {

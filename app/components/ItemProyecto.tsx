@@ -39,9 +39,10 @@ function ItemProyecto({
       </Card.Body>
       <Card.Footer>
         <RatingGroup.Root
+          colorPalette="cyan"
           readOnly
           count={5}
-          defaultValue={item.dificultad}
+          value={item.dificultad}
           size="sm"
         >
           <RatingGroup.HiddenInput />
@@ -85,9 +86,10 @@ function ItemProyecto({
                   </div>
                   <div className="flex direction-col justify-start">
                     <RatingGroup.Root
+                      colorPalette="cyan"
                       readOnly
                       count={5}
-                      defaultValue={item.dificultad}
+                      value={item.dificultad}
                       size="sm"
                     >
                       <RatingGroup.HiddenInput />
